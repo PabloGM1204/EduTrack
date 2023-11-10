@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <ng-container *ngFor="let mesa of (mesas.mesas$ | async)">
+      <div cdkDrag class="mesas">
+        <app-mesa [mesa]="mesa"></app-mesa>
+      </div>
+    </ng-container>
+  </div>
+
+  <!--<div class="mesas" cdkDropList (cdkDropListDropped)="onDrop($event)">
+    <app-mesa
+    *ngFor="let mesa of (mesas.mesas$ | async)"
+    [mesa]="mesa"
+    cdkDrag
+    (cdkDragStarted)="onDragStarted($event, mesa)"
+    (cdkDragEnded)="onDragEnded($event, mesa)">
+    </app-mesa>
+  </div>-->
+</ion-content>
