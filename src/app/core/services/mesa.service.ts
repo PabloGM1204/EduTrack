@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, observeOn } from 'rxjs';
+import { BehaviorSubject, Observable, observeOn, tap } from 'rxjs';
 import { Mesa } from '../interfaces/mesa';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +13,18 @@ export class MesaService {
   private _mesas: BehaviorSubject<Mesa[]> = new BehaviorSubject<Mesa[]>([]);
   mesas$: Observable<Mesa[]> = this._mesas.asObservable();
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   // ---------Métodos---------
 
   public getAll(): Observable<Mesa[]>{
+    return this.http.get<Mesa[]>(environment.ApiJsonServerUrl+'/mesas').pipe(tap((mesas:any[])=>{
+      this._mesas.next(mesas)
+    }))
+
+    /*
     return new Observable(observer => {
       let lista: Mesa[] = [
         {id: 1, nombre: "Mesa 1", posicion:{x: 0, y:50}, alumno:{id: 1, nombre: "Alumno", foto:"FOTO"}},
@@ -25,6 +34,15 @@ export class MesaService {
       this._mesas.next(lista);
       observer.next(lista);
       observer.complete();
+    })
+    */
+  }
+
+  updateMesa(mesa: Mesa): Observable<Mesa> {
+    return new Observable<Mesa>(obs =>{
+      this.http.patch<Mesa>(environment.ApiJsonServerUrl+`/mesas/${mesa.id}`, mesa).subscribe(_=>{
+        obs.next(mesa);
+      })
     })
   }
 

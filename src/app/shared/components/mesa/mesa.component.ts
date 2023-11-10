@@ -18,12 +18,20 @@ export class MesaComponent  implements OnInit {
 
   ngOnInit() {}
 
-  dragStart($event: any){
-    console.log("Empieza")
-  }
-
   dragEnded(event: CdkDragEnd){
-    console.log("Soltado")
-    console.log(event.source.getFreeDragPosition())
+    console.log("Soltado");
+    console.log(event.source.getFreeDragPosition());
+    const newPosition = event.source.getFreeDragPosition();
+    // Creo la nueva mesa con los datos actualizados
+    const updatedMesa = { ...this.mesa, posicion: newPosition };
+    if (this.mesa && this.mesa.id !== undefined) {
+      const updatedMesa = { ...this.mesa, posicion: newPosition };
+      this.mesaService.updateMesa(updatedMesa).subscribe({
+        next: (res) => console.log('Mesa actualizada con éxito', res),
+        error: (err) => console.error('Error al actualizar la mesa', err)
+      });
+    } else {
+      console.error('Error: Mesa no tiene ID');
+    }
   }
 }
