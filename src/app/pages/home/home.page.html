@@ -13,8 +13,11 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div>
+    <ng-container *ngFor="let mesa of (mesas.mesas$ | async)">
+      <div class="mesas">
+        <app-mesa [mesa]="mesa"></app-mesa>
+      </div>
+    </ng-container>
   </div>
 </ion-content>

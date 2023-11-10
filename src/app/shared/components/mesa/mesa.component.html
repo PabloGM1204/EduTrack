@@ -1,0 +1,5 @@
+<div class="mesa" cdkDrag 
+[ngStyle]="{'left.px': mesa?.posicion?.x, 'top.px': mesa?.posicion?.y}"
+(cdkDragEnded)="dragEnded($event)">
+  <p>{{mesa?.nombre}}</p>
+</div>
