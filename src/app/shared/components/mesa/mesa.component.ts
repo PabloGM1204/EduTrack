@@ -18,23 +18,12 @@ export class MesaComponent  implements OnInit {
 
   ngOnInit() {}
 
-  onDragEnded(event: CdkDragEnd): void{
-    // Obtén la posición del drag después de que ha terminado
-    const newPosition = event.source.getFreeDragPosition();
+  dragStart($event: any){
+    console.log("Empieza")
+  }
 
-    // Asegúrar de que la mesa tenga una propiedad 'posicion' inicializada
-    if (this.mesa) {
-      // Si 'posicion' no está definida, inicialízala
-      if (!this.mesa.posicion) {
-        this.mesa.posicion = { x: 0, y: 0 };
-      }
-
-      // Ahora asigna las nuevas coordenadas a la propiedad 'posicion' de la mesa
-      this.mesa.posicion.x = newPosition.x;
-      this.mesa.posicion.y = newPosition.y;
-      
-      // Actualizar los datos
-      // this.mesaService.updateMesa(this.mesa);
-    }
+  dragEnded(event: CdkDragEnd){
+    console.log("Soltado")
+    console.log(event.source.getFreeDragPosition())
   }
 }

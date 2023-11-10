@@ -18,15 +18,6 @@ export class HomePage {
     this.mesas.getAll().subscribe();
   }
 
-  // Cuando empice el arrastre
-  onDragStarted(event: CdkDragStart, mesa: Mesa): void{
-    console.log("Inicio el drag and drop");
-  }
-
-  onDrop(event: CdkDragDrop<any[]>):void{
-    console.log("Soltado")
-  }
-
   onDragEnded(event: CdkDragEnd, mesa: Mesa): void {
     console.log('Arrastre finalizado', event);
   

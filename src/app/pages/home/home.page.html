@@ -15,19 +15,9 @@
 
   <div>
     <ng-container *ngFor="let mesa of (mesas.mesas$ | async)">
-      <div cdkDrag class="mesas">
+      <div class="mesas">
         <app-mesa [mesa]="mesa"></app-mesa>
       </div>
     </ng-container>
   </div>
-
-  <!--<div class="mesas" cdkDropList (cdkDropListDropped)="onDrop($event)">
-    <app-mesa
-    *ngFor="let mesa of (mesas.mesas$ | async)"
-    [mesa]="mesa"
-    cdkDrag
-    (cdkDragStarted)="onDragStarted($event, mesa)"
-    (cdkDragEnded)="onDragEnded($event, mesa)">
-    </app-mesa>
-  </div>-->
 </ion-content>
