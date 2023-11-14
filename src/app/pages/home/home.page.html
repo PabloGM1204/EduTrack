@@ -13,6 +13,17 @@
     </ion-toolbar>
   </ion-header>
 
+  <!--Boton para poner las mesas en 250, 250 en caso de perderlas de vista-->
+  <ion-button fill="clear" aria-label="Recargar Posicion" (click)="recargarMesas()">
+    <ion-icon slot="icon-only" color="primary" name="reload-outline" aria-hidden="true"></ion-icon>
+  </ion-button>
+
+  <!--Botón para crear una nueva mesa-->
+  <ion-button fill="clear" aria-label="Recargar Posicion" (click)="crearMesa()">
+    <ion-icon slot="icon-only" color="primary" name="reload-outline" aria-hidden="true"></ion-icon>
+  </ion-button>
+
+
   <div>
     <ng-container *ngFor="let mesa of (mesas.mesas$ | async)">
       <div class="mesas">

@@ -21,6 +21,7 @@ export class MesaService {
 
   public getAll(): Observable<Mesa[]>{
     return this.http.get<Mesa[]>(environment.ApiJsonServerUrl+'/mesas').pipe(tap((mesas:any[])=>{
+      console.log(mesas)
       this._mesas.next(mesas)
     }))
 
@@ -41,6 +42,7 @@ export class MesaService {
   updateMesa(mesa: Mesa): Observable<Mesa> {
     return new Observable<Mesa>(obs =>{
       this.http.patch<Mesa>(environment.ApiJsonServerUrl+`/mesas/${mesa.id}`, mesa).subscribe(_=>{
+        console.log(mesa)
         obs.next(mesa);
       })
     })
@@ -69,4 +71,17 @@ export class MesaService {
     }
     this.updateMesa(mesa).subscribe()
   }*/
+
+  actualizarPosicionesMesas(): void {
+    // Copio el array que tengo de mesas, con el .map y copio los valores de cada mesa solo que le cambio la posición
+    const mesasActualizadas = this._mesas.value.map(mesa => ({
+      ...mesa,
+      posicion: { x: 250, y: 250 }
+    }));
+    console.log("Poner visible")
+    // Actualizamos todos las subscripciones
+    this._mesas.next(mesasActualizadas);
+  }
+
+
 }

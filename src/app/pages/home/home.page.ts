@@ -32,4 +32,12 @@ export class HomePage {
     });*/
     
   }
+
+  recargarMesas(){
+    this.mesas.actualizarPosicionesMesas();
+  }
+
+  crearMesa(){
+    
+  }
 }
