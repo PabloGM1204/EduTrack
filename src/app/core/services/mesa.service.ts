@@ -48,35 +48,11 @@ export class MesaService {
     })
   }
 
-  /*updateMesa(mesa: Mesa ): Observable<Mesa> {
-    return new Observable(observer =>{
-      var _lista = [...this._mesas.value];
-      var index = _lista.findIndex(m=>m.id==mesa.id);
-      if(index<0){
-        observer.error("Error");
-      } else {
-        _lista[index]=mesa;
-        this._mesas.next(_lista);
-        observer.next(mesa);
-      }
-      observer.complete();
-    })
-  }*/
-
-  /*updateMesaPosition(mesa: Mesa, newPosition: { x: number, y: number }): void {
-    var _lista = [...this._mesas.value];
-    // mesa = _lista.find(m => m.id === mesaId);
-    if (mesa) {
-      mesa.posicion = newPosition;
-    }
-    this.updateMesa(mesa).subscribe()
-  }*/
-
   actualizarPosicionesMesas(): void {
     // Copio el array que tengo de mesas, con el .map y copio los valores de cada mesa solo que le cambio la posición
     const mesasActualizadas = this._mesas.value.map(mesa => ({
       ...mesa,
-      posicion: { x: 250, y: 250 }
+      posicion: { x: 0, y: 0 }
     }));
     console.log("Poner visible")
     // Actualizamos todos las subscripciones
