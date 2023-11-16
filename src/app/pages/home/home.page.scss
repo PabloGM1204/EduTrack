@@ -27,6 +27,15 @@
 }
 
 .mesas{
+  position:absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.zona-eliminacion {
+  border: 2px dashed red;
+  background-color: red;
+  min-height: 50px;
   width: 100px;
   height: 100px;
 }

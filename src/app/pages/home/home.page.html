@@ -20,15 +20,19 @@
 
   <!--Botón para crear una nueva mesa-->
   <ion-button fill="clear" aria-label="Recargar Posicion" (click)="crearMesa()">
-    <ion-icon slot="icon-only" color="primary" name="reload-outline" aria-hidden="true"></ion-icon>
+    <ion-icon slot="icon-only" color="primary" name="add-outline" aria-hidden="true"></ion-icon>
   </ion-button>
 
-
+  <!--TODO:zona de eliminación de mesas-->
+  
   <div>
-    <ng-container *ngFor="let mesa of (mesas.mesas$ | async)">
+    <ng-container >
       <div class="mesas">
-        <app-mesa [mesa]="mesa"></app-mesa>
+        <app-mesa *ngFor="let mesa of (mesas.mesas$ | async)" 
+        [mesa]="mesa"
+        (mesaClicked)="mesaClick(mesa)"></app-mesa>
       </div>
     </ng-container>
   </div>
+
 </ion-content>
