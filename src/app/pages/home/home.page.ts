@@ -5,6 +5,7 @@ import { Mesa } from 'src/app/core/interfaces/mesa';
 import { ModalController } from '@ionic/angular';
 import { AlumnoComponent } from 'src/app/shared/components/alumno/alumno.component';
 import { Router } from '@angular/router';
+import { ModalSelectionComponent } from 'src/app/shared/components/modal-selection/modal-selection.component';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomePage {
 
   constructor(
     public mesas: MesaService,
+    private modal: ModalController,
     private rotuer: Router
   ) {}
 
@@ -32,8 +34,30 @@ export class HomePage {
     this.mesas.addMesa().subscribe();
   }
 
-  mesaClick(mesa: Mesa){
+  public async mesaClick(mesa: Mesa){
     console.log("Mesa clickeado")
-    this.rotuer.navigate(["/info", mesa.id])
+    var onDismiss = (info:any) => {
+      console.log(info)
+    }
+    this.presentForm(mesa, onDismiss)
+
+    //this.rotuer.navigate(["/info", mesa.id])
+  }
+
+  async presentForm(data: Mesa | null, onDismiss:(result:any)=>void){
+    
+    const modal = await this.modal.create({
+      component: ModalSelectionComponent,
+      componentProps:{
+        mesa: data
+      },
+      cssClass:"modal"
+    });
+    modal.present();
+    modal.onDidDismiss().then(result=>{
+      if(result && result.data){
+        onDismiss(result);
+      }
+    });
   }
 }

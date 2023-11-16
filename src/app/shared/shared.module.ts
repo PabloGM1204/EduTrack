@@ -5,6 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MesaComponent } from './components/mesa/mesa.component';
+import { ModalSelectionComponent } from './components/modal-selection/modal-selection.component';
+import { AlumnoComponent } from './components/alumno/alumno.component';
+import { AlumnoItemComponent } from './components/alumno-item/alumno-item.component';
 
 
 @NgModule({
@@ -14,7 +17,10 @@ import { MesaComponent } from './components/mesa/mesa.component';
     // Pipes
 
     // Componentes
-    MesaComponent
+    MesaComponent,
+    ModalSelectionComponent,
+    AlumnoComponent,
+    AlumnoItemComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +39,10 @@ import { MesaComponent } from './components/mesa/mesa.component';
     // Directivas
 
     // Componentes
-    MesaComponent
+    MesaComponent,
+    ModalSelectionComponent,
+    AlumnoComponent,
+    AlumnoItemComponent
   ]
 })
 export class SharedModule { }
