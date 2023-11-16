@@ -4,6 +4,7 @@ import { CdkDragEnd, CdkDragStart, CdkDragDrop, CdkDropList, CdkDropListGroup, m
 import { Mesa } from 'src/app/core/interfaces/mesa';
 import { ModalController } from '@ionic/angular';
 import { AlumnoComponent } from 'src/app/shared/components/alumno/alumno.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomePage {
 
   constructor(
     public mesas: MesaService,
-    private modal: ModalController
+    private rotuer: Router
   ) {}
 
   //TODO: añadir loading
@@ -33,24 +34,6 @@ export class HomePage {
 
   mesaClick(mesa: Mesa){
     console.log("Mesa clickeado")
-    var onDisMiss =(info:any)=>{
-      console.log(info);
-    }
-    this.presentModal(mesa, onDisMiss)
-  }
-
-  async presentModal(data:Mesa | null, onDismiss:(result: any)=>void){
-    const modal = await this.modal.create({
-      component:AlumnoComponent,
-      componentProps:{
-        mesa:data
-      }
-    });
-    modal.present();
-    modal.onDidDismiss().then(result=>{
-      if(result && result.data){
-        onDismiss(result)
-      }
-    })
+    this.rotuer.navigate(["/info", mesa.id])
   }
 }

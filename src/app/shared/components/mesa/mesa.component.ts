@@ -80,6 +80,6 @@ export class MesaComponent  implements OnInit {
 
 
   mesaClick(){
-    console.log("Click")
+    this.mesaClicked.emit();
   }
 }

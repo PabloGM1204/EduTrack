@@ -7,7 +7,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MesaComponent } from './components/mesa/mesa.component';
 
 
-
 @NgModule({
   declarations: [
     // Directivas

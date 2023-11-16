@@ -39,6 +39,11 @@ export class MesaService {
     */
   }
 
+  public getMesa(id: number): Observable<Mesa>{
+    return this.http.get<Mesa>(environment.ApiJsonServerUrl+`/mesas/${id}`);
+  }
+
+
   public updateMesa(mesa: Mesa): Observable<Mesa> {
     return new Observable<Mesa>(obs =>{
       this.http.patch<Mesa>(environment.ApiJsonServerUrl+`/mesas/${mesa.id}`, mesa).subscribe(_=>{
