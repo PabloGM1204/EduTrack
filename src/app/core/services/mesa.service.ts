@@ -20,7 +20,7 @@ export class MesaService {
   // ---------Métodos---------
 
   public getAll(): Observable<Mesa[]>{
-    return this.http.get<Mesa[]>(environment.ApiJsonServerUrl+'/mesas').pipe(tap((mesas:any[])=>{
+    return this.http.get<Mesa[]>(environment.ApiStrapiUrl+'/mesas').pipe(tap((mesas:any[])=>{
       console.log(mesas)
       this._mesas.next(mesas)
     }))
@@ -40,13 +40,13 @@ export class MesaService {
   }
 
   public getMesa(id: number): Observable<Mesa>{
-    return this.http.get<Mesa>(environment.ApiJsonServerUrl+`/mesas/${id}`);
+    return this.http.get<Mesa>(environment.ApiStrapiUrl+`/mesas/${id}`);
   }
 
 
   public updateMesa(mesa: Mesa): Observable<Mesa> {
     return new Observable<Mesa>(obs =>{
-      this.http.patch<Mesa>(environment.ApiJsonServerUrl+`/mesas/${mesa.id}`, mesa).subscribe(_=>{
+      this.http.patch<Mesa>(environment.ApiStrapiUrl+`/mesas/${mesa.id}`, mesa).subscribe(_=>{
         console.log(mesa)
         obs.next(mesa);
       })
@@ -76,7 +76,7 @@ export class MesaService {
       },
       alumno: null
     };
-    return this.http.post<Mesa>(environment.ApiJsonServerUrl+"/mesas", _mesa).pipe(tap(_=>{
+    return this.http.post<Mesa>(environment.ApiStrapiUrl+"/mesas", _mesa).pipe(tap(_=>{
       this.getAll().subscribe();
     }))
   }
@@ -84,7 +84,7 @@ export class MesaService {
 
   public deleteMesa(mesa: Mesa): Observable<Mesa>{
     return new Observable<Mesa>(obs=>{
-      this.http.delete<Mesa>(environment.ApiJsonServerUrl+`/mesas/${mesa.id}`).subscribe(_=>{
+      this.http.delete<Mesa>(environment.ApiStrapiUrl+`/mesas/${mesa.id}`).subscribe(_=>{
         this.getAll().subscribe(_=>{
           obs.next(mesa);
         });
