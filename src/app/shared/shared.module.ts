@@ -8,6 +8,7 @@ import { MesaComponent } from './components/mesa/mesa.component';
 import { ModalSelectionComponent } from './components/modal-selection/modal-selection.component';
 import { AlumnoComponent } from './components/alumno/alumno.component';
 import { AlumnoItemComponent } from './components/alumno-item/alumno-item.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AlumnoItemComponent } from './components/alumno-item/alumno-item.compon
     MesaComponent,
     ModalSelectionComponent,
     AlumnoComponent,
-    AlumnoItemComponent
+    AlumnoItemComponent,
+    LoginFormComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,8 @@ import { AlumnoItemComponent } from './components/alumno-item/alumno-item.compon
     MesaComponent,
     ModalSelectionComponent,
     AlumnoComponent,
-    AlumnoItemComponent
+    AlumnoItemComponent,
+    LoginFormComponent
   ]
 })
 export class SharedModule { }
