@@ -7,5 +7,5 @@ export interface Mesa {
         x: number;
         y: number;
     };
-    alumnoFK: number;
+    MesaID: string
 }

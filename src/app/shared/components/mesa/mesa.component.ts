@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Mesa } from 'src/app/core/interfaces/mesa';
-import { MesaService } from 'src/app/core/services/mesa.service';
+import { MesaService } from 'src/app/core/services/api/mesa.service';
 import { CdkDragEnd } from '@angular/cdk/drag-drop';
 
 @Component({
@@ -19,7 +19,7 @@ export class MesaComponent  implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("Posicion"+this.mesa?.posicion.x+" "+this.mesa?.posicion.y)
+    console.log("Posicion "+this.mesa?.posicion.x+" "+this.mesa?.posicion.y)
   }
 
   // Al soltar el arrastre de la mesa

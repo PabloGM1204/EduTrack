@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
-import { JwtService } from './jwt.service';
-import { ApiService } from './api.service';
-import { UserCredentials } from '../interfaces/user-credentials';
+import { JwtService } from '../../jwt.service';
+import { ApiService } from '../api.service';
+import { UserCredentials } from '../../../interfaces/user-credentials';
 import { Observable, lastValueFrom, map } from 'rxjs';
-import { StrapiExtendedUser, StrapiLoginPayload, StrapiLoginResponse, StrapiRegisterPayLoad, StrapiRegisterResponse } from '../interfaces/strapi';
-import { UserRegisterInfo } from '../interfaces/user-register-info';
-import { User } from '../interfaces/user';
+import { StrapiExtendedUser, StrapiLoginPayload, StrapiLoginResponse, StrapiRegisterPayLoad, StrapiRegisterResponse } from '../../../interfaces/strapi';
+import { UserRegisterInfo } from '../../../interfaces/user-register-info';
+import { User } from '../../../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
