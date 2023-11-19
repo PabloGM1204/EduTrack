@@ -24,7 +24,7 @@ export class MesaService {
     
     return this.http.get('/mesas').pipe(map(response => response.data.map((item: { id: any; attributes: { NombreMesa: any; posicion: any; MesaID: any; }; }) => ({
       id: item.id,
-      NombreMesa: item.attributes.NombreMesa,
+      nombre: item.attributes.NombreMesa,
       posicion: item.attributes.posicion,
       MesaID: item.attributes.MesaID
     }))),

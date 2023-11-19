@@ -30,6 +30,7 @@ export class ModalSelectionComponent  implements OnInit, ControlValueAccessor {
   ) { }
 
   async onLoadAlumnos(){
+    console.log("Selectable click")
     this.alumnos = await lastValueFrom(this.alumnoSvc.getAll());
   }
 

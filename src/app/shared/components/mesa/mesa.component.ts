@@ -19,7 +19,8 @@ export class MesaComponent  implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("Posicion "+this.mesa?.posicion.x+" "+this.mesa?.posicion.y)
+    console.log("Posicion "+this.mesa?.posicion.x+" "+this.mesa?.posicion.y);
+    console.log(this.mesa?.nombre);
   }
 
   // Al soltar el arrastre de la mesa
