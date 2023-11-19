@@ -20,7 +20,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'alumnos',
+    loadChildren: () => import('./pages/alumnos/alumnos.module').then( m => m.AlumnosPageModule)
   },
+
 
 ];
 

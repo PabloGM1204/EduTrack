@@ -1,6 +1,7 @@
 <ion-item [button]="true" (click)="onAlumnoClicked()">
   <ion-avatar slot="start">
-    <img *ngIf=""/>
-    <img/>
+    <img *ngIf="!alumno?.foto" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+    <img *ngIf="alumno && alumno.foto" alt="Silhouette of a person's head" [src]="alumno.foto"/>
   </ion-avatar>
+  <ion-label>{{alumno?.nombre}}</ion-label>
 </ion-item>
