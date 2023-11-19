@@ -1,0 +1,16 @@
+<!--<div id="popover-button">
+  <ion-item [button]="!disable" [detail]="!disable">
+    <ion-text slot="start" position="fixed"></ion-text>
+    <ion-text *ngIf="!alumnoSelected && !disable">Seleccione un alumno</ion-text>
+    <ion-text *ngIf="!alumnoSelected && disable">Ninguno</ion-text>
+    <ion-avatar slot="start" *ngIf="alumnoSelected">
+      <ion-img *ngIf="alumnoSelected.img" [src]="alumnoSelected.img"></ion-img>
+      <img *ngIf="!alumnoSelected?.img" alt="Silhouette" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
+    </ion-avatar>
+    <ion-text *ngIf="alumnoSelected">{{alumnoSelected.name}}</ion-text>
+  </ion-item>
+</div>
+
+<ion-popover *ngIg="!disable" trigger="popover-button" #popover (willPresent)="onLoadAlumnos()">
+
+</ion-popover>-->

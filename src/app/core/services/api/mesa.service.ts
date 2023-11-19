@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, observeOn, tap } from 'rxjs';
-import { Mesa } from '../interfaces/mesa';
+import { BehaviorSubject, Observable, map, observeOn, tap } from 'rxjs';
+import { Mesa } from '../../interfaces/mesa';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,29 @@ export class MesaService {
   mesas$: Observable<Mesa[]> = this._mesas.asObservable();
 
   constructor(
-    private http: HttpClient
+    private http: ApiService
   ) { }
 
   // ---------Métodos---------
 
   public getAll(): Observable<Mesa[]>{
-    return this.http.get<Mesa[]>(environment.ApiJsonServerUrl+'/mesas').pipe(tap((mesas:any[])=>{
+    
+    return this.http.get('/mesas').pipe(map(response => response.data.map((item: { id: any; attributes: { NombreMesa: any; posicion: any; MesaID: any; }; }) => ({
+      id: item.id,
+      NombreMesa: item.attributes.NombreMesa,
+      posicion: item.attributes.posicion,
+      MesaID: item.attributes.MesaID
+    }))),
+    tap(mesas => {
+      console.log(mesas);
+      this._mesas.next(mesas);
+    })
+    )
+    
+    /*return this.http.get('/mesas').pipe(tap((mesas:any[])=>{
       console.log(mesas)
       this._mesas.next(mesas)
-    }))
+    }))*/
 
     /*
     return new Observable(observer => {
@@ -40,13 +54,13 @@ export class MesaService {
   }
 
   public getMesa(id: number): Observable<Mesa>{
-    return this.http.get<Mesa>(environment.ApiJsonServerUrl+`/mesas/${id}`);
+    return this.http.get(environment.ApiStrapiUrl+`/mesas/${id}`);
   }
 
 
   public updateMesa(mesa: Mesa): Observable<Mesa> {
     return new Observable<Mesa>(obs =>{
-      this.http.patch<Mesa>(environment.ApiJsonServerUrl+`/mesas/${mesa.id}`, mesa).subscribe(_=>{
+      this.http.patch(environment.ApiStrapiUrl+`/mesas/${mesa.id}`, mesa).subscribe(_=>{
         console.log(mesa)
         obs.next(mesa);
       })
@@ -76,7 +90,7 @@ export class MesaService {
       },
       alumno: null
     };
-    return this.http.post<Mesa>(environment.ApiJsonServerUrl+"/mesas", _mesa).pipe(tap(_=>{
+    return this.http.post(environment.ApiStrapiUrl+"/mesas", _mesa).pipe(tap(_=>{
       this.getAll().subscribe();
     }))
   }
@@ -84,7 +98,7 @@ export class MesaService {
 
   public deleteMesa(mesa: Mesa): Observable<Mesa>{
     return new Observable<Mesa>(obs=>{
-      this.http.delete<Mesa>(environment.ApiJsonServerUrl+`/mesas/${mesa.id}`).subscribe(_=>{
+      this.http.delete(environment.ApiStrapiUrl+`/mesas/${mesa.id}`).subscribe(_=>{
         this.getAll().subscribe(_=>{
           obs.next(mesa);
         });
