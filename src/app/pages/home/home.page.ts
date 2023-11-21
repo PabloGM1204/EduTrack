@@ -39,6 +39,8 @@ export class HomePage {
 
   ngOnInit(): void{
     this.loadMesas();
+    console.log(this._mesas.value)
+
     //this.mesas.getAll().subscribe();
   }
 

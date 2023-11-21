@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Alumno } from 'src/app/core/interfaces/alumno';
+import { AlumnoService } from 'src/app/core/services/api/alumno.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlumnosPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public alumnosSvc: AlumnoService
+  ) { }
 
   ngOnInit() {
+    this.alumnosSvc.getAll().subscribe();
   }
 
 }

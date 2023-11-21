@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Alumno } from 'src/app/core/interfaces/alumno';
 
 @Component({
   selector: 'app-alumno',
@@ -7,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlumnoComponent  implements OnInit {
 
+  @Input() alumno: Alumno | null = null;
+
+  //@Input() name: string | null = null
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.alumno)
+  }
 
 }
