@@ -3,14 +3,29 @@
     <thead>
       <tr>
         <th>Nombre</th>
-        <th>Detalles</th>
-        <th>Acciones</th>
+        <th>Fecha-Nacimiento</th>
+        <th>Email</th>
+        <th id="icono"><ion-icon slot="icon-only" color="primary" name="person-add-outline" aria-hidden="true"></ion-icon></th>
       </tr>
     </thead>
     <tbody>
+      <tr *ngFor="let alum of alumnosSvc.alumnos$ | async">
+        <td>
+          <app-alumno 
+          [name]="alum.nombre">
+          </app-alumno>
+        </td>
+        <td>
+          <app-alumno 
+          [fechaNacimiento]="alum.fechaNacimiento">
+          </app-alumno>
+        </td>
+        <td>
+          <app-alumno 
+          [email]="alum.email">
+          </app-alumno>
+        </td>
+      </tr>
     </tbody>
   </table>
-  <app-alumno *ngFor="let alum of alumnosSvc.alumnos$ | async"
-  [alumno]="alum">
-  </app-alumno>
 </ion-content>
