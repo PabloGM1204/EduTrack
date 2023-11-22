@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, lastValueFrom, map, tap } from 'rxjs';
 import { Alumno } from '../../interfaces/alumno';
 import { ApiService } from './api.service';
 import { environment } from 'src/environments/environment';
@@ -75,9 +75,23 @@ export class AlumnoService {
 
 
   public addAlumno(_alumno: Alumno): Observable<Alumno>{
-    return this.http.post("/alumnos", _alumno).pipe(tap(_=>{
+    let crearAlumno = {
+      data: {
+        Nombre: _alumno.nombre,
+        FechaNacimiento: _alumno.fechaNacimiento,
+        Email: _alumno.email
+      }
+    };
+    console.log(crearAlumno)
+    return this.http.post("/alumnos", crearAlumno).pipe(
+      catchError( error => {
+        console.log("Error creando Alumno");
+        throw error;
+      })
+    );
+    /*return this.http.post("/alumnos", _alumno).pipe(tap(_=>{
       this.getAll().subscribe();
-    }))
+    }))*/
   }
 
 
