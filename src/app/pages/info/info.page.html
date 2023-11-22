@@ -1,13 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>info</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">info</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" id="general">
+  <ion-buttons slot="start">
+    <ion-button color="primary" fill="clear" (click)="onCancel()">
+      <ion-icon slot="icon-only" name="arrow-back-outline"/>
+    </ion-button>
+  </ion-buttons>
+  <ion-title>
+    {{(dato == 'New'?'Nuevo Alumno':'Editar alumno')}}
+  </ion-title>
+  <ion-buttons slot="end">
+    <ion-button *ngIf="dato == 'Edit'" color="primary" fill="clear" (click)="onDelete()">
+      <ion-icon slot="icon-only" name="trash-outline"/>
+    </ion-button>
+  </ion-buttons>
+  <form class="ion-padding" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-input label="Nombre" labelPlacement="start" formControlName="nombre" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Fecha-Nacimiento" labelPlacement="start" formControlName="fechaNacimiento" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="email" labelPlacement="start" formControlName="email" type="text"></ion-input>
+    </ion-item>
+  </form>
+  <ion-footer>
+    <!--TODO: hacer la comprobacion del formulario-->
+    <ion-button type="submit" class="ion-padding" expand="full" (click)="onSubmit()">{{(dato == 'New'?'Crear Alumno':'Guardar alumno')}}</ion-button>
+  </ion-footer>
 </ion-content>

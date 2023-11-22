@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { InfoPageRoutingModule } from './info-routing.module';
 
@@ -12,7 +9,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
   imports: [
     SharedModule,
-    InfoPageRoutingModule
+    InfoPageRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [InfoPage]
 })

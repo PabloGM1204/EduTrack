@@ -5,7 +5,11 @@
         <th>Nombre</th>
         <th>Fecha-Nacimiento</th>
         <th>Email</th>
-        <th id="icono"><ion-icon slot="icon-only" color="primary" name="person-add-outline" aria-hidden="true"></ion-icon></th>
+        <th id="icono">
+          <ion-button fill="clear" (click)="crearAlumno()">
+            <ion-icon slot="icon-only" color="primary" name="person-add-outline" aria-hidden="true"></ion-icon>
+          </ion-button>
+        </th>
       </tr>
     </thead>
     <tbody>

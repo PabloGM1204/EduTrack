@@ -74,15 +74,8 @@ export class AlumnoService {
   }
 
 
-  public addAlumno(): Observable<Alumno>{
-    var _alumno: any = {
-      // TODO: Necesito obtener el siguiente id de la mesa
-      id: 0,
-      nombre: "Nueva Alumno",
-      fechaNacimiento: "2001-01-01",
-      email: "email@email.com"
-    };
-    return this.http.post(environment.ApiStrapiUrl+"/alumnos", _alumno).pipe(tap(_=>{
+  public addAlumno(_alumno: Alumno): Observable<Alumno>{
+    return this.http.post("/alumnos", _alumno).pipe(tap(_=>{
       this.getAll().subscribe();
     }))
   }

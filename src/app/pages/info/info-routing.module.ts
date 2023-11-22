@@ -5,7 +5,7 @@ import { InfoPage } from './info.page';
 
 const routes: Routes = [
   {
-    path: ':id',
+    path: ':dato',
     component: InfoPage
   }
 ];
