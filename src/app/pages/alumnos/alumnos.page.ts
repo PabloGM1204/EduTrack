@@ -24,4 +24,14 @@ export class AlumnosPage implements OnInit {
     this.router.navigate(['/info', 'New'])
   }
 
+  editarAlumno(id: number){
+    this.router.navigate(['/info', id])
+  }
+
+  eliminarAlumno(alumno: Alumno){
+    this.alumnosSvc.deleteAlumno(alumno).subscribe(_ => {
+      console.log("Alumno eliminado")
+    })
+  }
+
 }

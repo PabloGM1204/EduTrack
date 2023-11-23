@@ -5,6 +5,7 @@
         <th>Nombre</th>
         <th>Fecha-Nacimiento</th>
         <th>Email</th>
+        <th>Acciones</th>
         <th id="icono">
           <ion-button fill="clear" (click)="crearAlumno()">
             <ion-icon slot="icon-only" color="primary" name="person-add-outline" aria-hidden="true"></ion-icon>
@@ -28,6 +29,14 @@
           <app-alumno 
           [email]="alum.email">
           </app-alumno>
+        </td>
+        <td>
+          <ion-button fill="clear" (click)="editarAlumno(alum.id)">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" (click)="eliminarAlumno(alum)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
         </td>
       </tr>
     </tbody>

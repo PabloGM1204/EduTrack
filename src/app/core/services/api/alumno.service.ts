@@ -20,11 +20,10 @@ export class AlumnoService {
 
   public getAll(): Observable<Alumno[]>{
   
-    return this.http.get('/alumnos').pipe(map(response => response.data.map((item: { id: any; attributes: { Nombre: any; Email: any; AlumnoId: any; FechaNacimiento: any }; }) => ({
+    return this.http.get('/alumnos').pipe(map(response => response.data.map((item: { id: any; attributes: { Nombre: any; Email: any; FechaNacimiento: any }; }) => ({
       id: item.id,
       nombre: item.attributes.Nombre,
       email: item.attributes.Email,
-      alumnoId: item.attributes.AlumnoId,
       fechaNacimiento: item.attributes.FechaNacimiento
     }))),
     tap(alumnos => {
@@ -56,19 +55,38 @@ export class AlumnoService {
   }
 
   public query(q: string): Observable<Alumno[]>{
-    return this.http.get(environment.ApiStrapiUrl+'/alumnos?q='+q)
+    return this.http.get('/alumnos?q='+q)
   }
 
   public getAlumno(id: number): Observable<Alumno>{
-    return this.http.get(environment.ApiStrapiUrl+`/alumnos/${id}`);
+    return this.http.get(`/alumnos/${id}`).pipe(map(response => {
+      const attributes = response.data.attributes;
+      const alumnoMapeado: Alumno = {
+        id: response.data.id,
+        nombre: attributes.Nombre,
+        fechaNacimiento: attributes.FechaNacimiento,
+        email: attributes.Email
+      };
+      console.log("Alumno mapeado "+ alumnoMapeado);
+      return alumnoMapeado;
+    }))
   }
 
 
-  public updateMesa(alumno: Alumno): Observable<Alumno> {
+  public updateAlumno(_alumno: Alumno): Observable<Alumno> {
+    console.log(_alumno.id)
+    let actualizarAlumno = {
+      data: {
+        Nombre: _alumno.nombre,
+        FechaNacimiento: _alumno.fechaNacimiento,
+        Email: _alumno.email
+      }
+    }
     return new Observable<Alumno>(obs =>{
-      this.http.patch(environment.ApiStrapiUrl+`/alumnos/${alumno.id}`, alumno).subscribe(_=>{
-        console.log(alumno)
-        obs.next(alumno);
+      this.http.put(`/alumnos/${_alumno.id}`, actualizarAlumno).subscribe(_=>{
+        console.log(_alumno)
+        obs.next(_alumno);
+        this.getAll().subscribe()
       })
     })
   }
@@ -84,6 +102,9 @@ export class AlumnoService {
     };
     console.log(crearAlumno)
     return this.http.post("/alumnos", crearAlumno).pipe(
+      tap(_ => {
+        this.getAll().subscribe();
+      }),
       catchError( error => {
         console.log("Error creando Alumno");
         throw error;
@@ -95,9 +116,9 @@ export class AlumnoService {
   }
 
 
-  public deleteAlumnos(alumno: Alumno): Observable<Alumno>{
+  public deleteAlumno(alumno: Alumno): Observable<Alumno>{
     return new Observable<Alumno>(obs=>{
-      this.http.delete(environment.ApiStrapiUrl+`/alumnos/${alumno.id}`).subscribe(_=>{
+      this.http.delete(`/alumnos/${alumno.id}`).subscribe(_=>{
         this.getAll().subscribe(_=>{
           obs.next(alumno);
         });

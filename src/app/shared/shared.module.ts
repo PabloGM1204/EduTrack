@@ -10,6 +10,7 @@ import { AlumnoComponent } from './components/alumno/alumno.component';
 import { AlumnoItemComponent } from './components/alumno-item/alumno-item.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HeaderComponent } from './components/header/header.component';
     AlumnoComponent,
     AlumnoItemComponent,
     LoginFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    AlumnoDetailComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { HeaderComponent } from './components/header/header.component';
     AlumnoComponent,
     AlumnoItemComponent,
     LoginFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    AlumnoDetailComponent
   ]
 })
 export class SharedModule { }
