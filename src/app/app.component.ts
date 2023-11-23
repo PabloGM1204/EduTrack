@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/services/api/strapi/auth.service';
 import { Router } from '@angular/router';
+import { User } from './core/interfaces/user';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+  user: User | undefined
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private rotuer: Router
   ) {
     this.auth.isLogged$.subscribe(logged => {
@@ -19,5 +21,12 @@ export class AppComponent {
       else
         this.rotuer.navigate(['/login'])
     });
+  }
+
+  onSingOut(){
+    this.auth.logOut().subscribe(_=>{
+      this.rotuer.navigate(['/login']);
+      this.user = undefined;
+    })
   }
 }

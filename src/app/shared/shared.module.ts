@@ -9,6 +9,8 @@ import { ModalSelectionComponent } from './components/modal-selection/modal-sele
 import { AlumnoComponent } from './components/alumno/alumno.component';
 import { AlumnoItemComponent } from './components/alumno-item/alumno-item.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { HeaderComponent } from './components/header/header.component';
+import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     ModalSelectionComponent,
     AlumnoComponent,
     AlumnoItemComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    HeaderComponent,
+    AlumnoDetailComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +49,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     ModalSelectionComponent,
     AlumnoComponent,
     AlumnoItemComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    HeaderComponent,
+    AlumnoDetailComponent
   ]
 })
 export class SharedModule { }

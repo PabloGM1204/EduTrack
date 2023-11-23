@@ -1,5 +1,3 @@
-import { Alumno } from "./alumno";
-
 export interface Mesa {
     id: number,
     nombre: string,

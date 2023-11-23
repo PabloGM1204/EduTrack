@@ -45,7 +45,7 @@ export class ApiService {
   // Método para actualizar
   put(path: string, body: Object = {}): Observable<any>{
     var url = `${environment.ApiStrapiUrl}${path}`;
-    return this.http.post(url, body, this.getHeader(url));
+    return this.http.put(url, body, this.getHeader(url));
   }
 
   // Método para hacer un post(crear)

@@ -12,6 +12,7 @@ import { AuthService } from './core/services/api/strapi/auth.service';
 import { ApiService } from './core/services/api/api.service';
 import { AuthStrapiService } from './core/services/api/strapi/auth-strapi.service';
 import { JwtService } from './core/services/jwt.service';
+import { SharedModule } from './shared/shared.module';
 
 export function httpProviderFactory(http: HttpClient) {
   return new HttpClientWebProvider(http);
@@ -27,7 +28,8 @@ export function AuthServiceProvider(jwt: JwtService, api: ApiService) {
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

@@ -1,25 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="false">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <!--Boton para poner las mesas en 250, 250 en caso de perderlas de vista-->
+  <!--Boton para poner las mesas en 250, 250 en caso de perderlas de vista
   <ion-button fill="clear" aria-label="Recargar Posicion" (click)="recargarMesas()">
     <ion-icon slot="icon-only" color="primary" name="reload-outline" aria-hidden="true"></ion-icon>
-  </ion-button>
+  </ion-button>-->
 
   <!--Botón para crear una nueva mesa-->
-  <ion-button fill="clear" aria-label="Recargar Posicion" (click)="crearMesa()">
+  <ion-button fill="clear" aria-label="Recargar Posicion" (click)="crearMesa()" id="crear">
     <ion-icon slot="icon-only" color="primary" name="add-outline" aria-hidden="true"></ion-icon>
   </ion-button>
 
