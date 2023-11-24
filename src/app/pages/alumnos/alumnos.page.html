@@ -18,12 +18,12 @@
       <tr *ngFor="let alum of alumnosSvc.alumnos$ | async">
         <td>
           <app-alumno
-          [foto]="alum.foto">
+          [foto]="alum.foto?.url_small">
           </app-alumno>
         </td>
         <td>
           <app-alumno 
-          [name]="alum.nombre">
+          [nombre]="alum.nombre">
           </app-alumno>
         </td>
         <td>

@@ -11,13 +11,15 @@ export class AlumnoComponent  implements OnInit {
 
   @Input() alumno: Alumno | null = null;
 
-  @Input() foto: Media | null | undefined = null;
-  @Input() name: string | null = null;
+  @Input() foto: string | undefined = "";
+  @Input() nombre: string | null = null;
   @Input() fechaNacimiento: string | null = null;
   @Input() email: string | null = null;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.alumno?.nombre)
+  }
 
 }
