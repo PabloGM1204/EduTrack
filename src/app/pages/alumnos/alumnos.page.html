@@ -2,6 +2,7 @@
   <table>
     <thead>
       <tr>
+        <th>Foto</th>
         <th>Nombre</th>
         <th>Fecha-Nacimiento</th>
         <th>Email</th>
@@ -15,6 +16,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let alum of alumnosSvc.alumnos$ | async">
+        <td>
+          <app-alumno
+          [foto]="alum.foto">
+          </app-alumno>
+        </td>
         <td>
           <app-alumno 
           [name]="alum.nombre">

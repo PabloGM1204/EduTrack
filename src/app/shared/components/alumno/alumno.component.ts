@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Alumno } from 'src/app/core/interfaces/alumno';
+import { Media } from 'src/app/core/interfaces/media';
 
 @Component({
   selector: 'app-alumno',
@@ -10,16 +11,13 @@ export class AlumnoComponent  implements OnInit {
 
   @Input() alumno: Alumno | null = null;
 
+  @Input() foto: Media | null | undefined = null;
   @Input() name: string | null = null;
   @Input() fechaNacimiento: string | null = null;
   @Input() email: string | null = null;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-    console.log(this.name)
-    console.log(this.fechaNacimiento)
-    console.log(this.email)
-  }
+  ngOnInit() {}
 
 }

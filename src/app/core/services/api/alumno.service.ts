@@ -20,18 +20,23 @@ export class AlumnoService {
 
   public getAll(): Observable<Alumno[]>{
   
-    return this.http.get('/alumnos').pipe(map(response => response.data.map((item: { id: any; attributes: { Nombre: any; Email: any; FechaNacimiento: any }; }) => ({
-      id: item.id,
-      nombre: item.attributes.Nombre,
-      email: item.attributes.Email,
-      fechaNacimiento: item.attributes.FechaNacimiento
-    }))),
+    return this.http.get('/alumnos/?populate=Foto').pipe(map(response => response.data.map((item: {
+      id: any; attributes: { Foto: any; Nombre: any; Email: any; FechaNacimiento: any }; }) => {
+        return {
+          id: item.id,
+          nombre: item.attributes.Nombre,
+          email: item.attributes.Email,
+          fechaNacimiento: item.attributes.FechaNacimiento,
+          foto: item.attributes.Foto?.data.length > 0 ?{
+            id: item.attributes.Foto.data[0].id,
+            url_large: item.attributes.Foto.data[0].attributes.formats.large?.url,
+            url_small: item.attributes.Foto.data[0].attributes.formats.small?.url,
+            url_medium: item.attributes.Foto.data[0].attributes.formats.medium?.url,
+            url_thumbnail: item.attributes.Foto.data[0].attributes.formats.thumbnail?.url,
+          }:null
+      }})),
     tap(alumnos => {
-      if(Array.isArray(alumnos)){
-        this._alumnos.next(alumnos);
-      } else{
-        console.log("ADIOS")
-      }
+      console.log(alumnos)
     })
     )
   
