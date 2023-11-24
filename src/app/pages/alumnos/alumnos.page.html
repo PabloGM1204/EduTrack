@@ -17,11 +17,6 @@
     <tbody>
       <tr *ngFor="let alum of alumnosSvc.alumnos$ | async">
         <td>
-          <app-alumno
-          [foto]="alum.foto?.url_small">
-          </app-alumno>
-        </td>
-        <td>
           <app-alumno 
           [nombre]="alum.nombre">
           </app-alumno>

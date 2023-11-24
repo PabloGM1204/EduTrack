@@ -28,11 +28,11 @@ export class AlumnoService {
           email: item.attributes.Email,
           fechaNacimiento: item.attributes.FechaNacimiento,
           foto: item.attributes.Foto?.data?{
-            id: item.attributes.Foto.data[0].id,
-            url_large: item.attributes.Foto.data[0].attributes.formats.large?.url,
-            url_small: item.attributes.Foto.data[0].attributes.formats.small?.url,
-            url_medium: item.attributes.Foto.data[0].attributes.formats.medium?.url,
-            url_thumbnail: item.attributes.Foto.data[0].attributes.formats.thumbnail?.url,
+            id: item.attributes.Foto.data.id,
+            url_large: item.attributes.Foto.data.attributes.formats.large?.url,
+            url_small: item.attributes.Foto.data.attributes.formats.small?.url,
+            url_medium: item.attributes.Foto.data.attributes.formats.medium?.url,
+            url_thumbnail: item.attributes.Foto.data.attributes.formats.thumbnail?.url,
           }:null
       }})));
   
