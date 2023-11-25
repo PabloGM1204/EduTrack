@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map, observeOn, tap } from 'rxjs';
+import { BehaviorSubject, Observable, map, tap } from 'rxjs';
 import { Mesa } from '../../interfaces/mesa';
-import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ApiService } from './api.service';
 
@@ -59,12 +58,27 @@ export class MesaService {
 
 
   public updateMesa(mesa: Mesa): Observable<Mesa> {
-    return new Observable<Mesa>(obs =>{
-      this.http.patch(environment.ApiStrapiUrl+`/mesas/${mesa.id}`, mesa).subscribe(_=>{
-        console.log(mesa)
-        obs.next(mesa);
-      })
-    })
+    let actualizarMesa = {
+      data: {
+        NombreMesa: mesa.nombre,
+        posicion: mesa.posicion,
+        MesaID: mesa.MesaID
+      }
+    }
+    return new Observable<Mesa>(obs => {
+      this.http.put(`/mesas/${mesa.id}`, actualizarMesa).subscribe({
+        next: (_) => {
+          obs.next(mesa); // Emitir la mesa actualizada
+        },
+        error: (err) => {
+          console.error('Error al actualizar la mesa:', err, 'Datos de la mesa:', actualizarMesa);
+          obs.error(err); // Emitir el error
+        },
+        complete: () => {
+          obs.complete(); // Completar el Observable
+        }
+      });
+    });
   }
 
   actualizarPosicionesMesas(): void {
