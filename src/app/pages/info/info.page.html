@@ -1,0 +1,16 @@
+<ion-content [fullscreen]="true" id="general">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" fill="clear" (click)="onCancel()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"/>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      {{(dato == 'New'?'Nuevo Alumno':'Editar alumno')}}
+    </ion-title>
+  </ion-toolbar>
+  <app-alumno-detail
+    [alumno]="alumnoSeleccionado" 
+    (onsubmit)="onSubmit($event)">
+  </app-alumno-detail>
+</ion-content>
