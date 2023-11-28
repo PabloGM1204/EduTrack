@@ -1,8 +1,9 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { IonInput, IonPopover } from '@ionic/angular';
+import { Component, Input, OnInit, forwardRef } from '@angular/core';
+import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
+import { IonInput, IonPopover, ModalController } from '@ionic/angular';
 import { lastValueFrom } from 'rxjs';
 import { Alumno } from 'src/app/core/interfaces/alumno';
+import { Mesa } from 'src/app/core/interfaces/mesa';
 import { AlumnoService } from 'src/app/core/services/api/alumno.service';
 
 export const ALUMNO_SELECTABLE_VALUE_ACCESOR: any = {
@@ -20,18 +21,47 @@ export const ALUMNO_SELECTABLE_VALUE_ACCESOR: any = {
 export class ModalSelectionComponent  implements OnInit, ControlValueAccessor {
 
   alumnoSelected: Alumno | undefined;
-  disable: boolean = true;
+  disable: boolean = false;
   alumnos: Alumno[] = [];
+
+  form:FormGroup;
+  mode:'New'|'Edit' = 'New';
+  @Input() set mesa(_mesa: Mesa | null){
+    if(_mesa){
+      this.form.controls['nombre'].setValue(_mesa.nombre);
+    }
+  }
 
   propagateChange = (obj: any) => {}
 
   constructor(
-    public alumnoSvc: AlumnoService
-  ) { }
+    public alumnoSvc: AlumnoService,
+    private formBuilder:FormBuilder,
+    private _modal: ModalController
+
+  ) {
+    this.form = this.formBuilder.group({
+      nombre:['', [Validators.required]]
+    })
+  }
+
+
+  onSubmit(){
+    this._modal.dismiss(this.form.value, 'ok');
+  }
+
+  onDelete(){
+    this._modal.dismiss(this.form.value, 'delete');
+  }
+
+  onSave(){
+    this._modal.dismiss(this.form.value, 'ok');
+  }
 
   async onLoadAlumnos(){
     console.log("Selectable click")
     this.alumnos = await lastValueFrom(this.alumnoSvc.getAll());
+    console.log(this.alumnos);
   }
 
   private async selectAlumno(id: number | undefined, propagate: boolean = false){
@@ -62,7 +92,9 @@ export class ModalSelectionComponent  implements OnInit, ControlValueAccessor {
     this.disable = isDisabled;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("Nombre de la mesa en el modal"+this.mesa?.nombre)
+  }
 
   private async filter(value: string){
     const query = value;

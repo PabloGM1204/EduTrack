@@ -15,7 +15,7 @@
   <div>
     <ng-container >
       <div class="mesas">
-        <app-mesa *ngFor="let mesa of mesas$ | async" 
+        <app-mesa *ngFor="let mesa of mesas.mesas$| async" 
         [mesa]="mesa"
         (mesaClicked)="mesaClick(mesa)"></app-mesa>
       </div>
