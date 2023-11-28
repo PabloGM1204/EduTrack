@@ -58,17 +58,19 @@ export class MesaService {
 
 
   public updateMesa(mesa: Mesa): Observable<Mesa> {
+    console.log("Recibo mesa: "+mesa.posicion)
     let actualizarMesa = {
       data: {
         NombreMesa: mesa.nombre,
         posicion: mesa.posicion,
-        MesaID: mesa.MesaID
+        MesaID: mesa.AlumnoID
       }
     }
     return new Observable<Mesa>(obs => {
       this.http.put(`/mesas/${mesa.id}`, actualizarMesa).subscribe({
         next: (_) => {
           obs.next(mesa); // Emitir la mesa actualizada
+          this.getAll().subscribe()
         },
         error: (err) => {
           console.error('Error al actualizar la mesa:', err, 'Datos de la mesa:', actualizarMesa);
@@ -93,18 +95,18 @@ export class MesaService {
   }
 
 
-  public addMesa(): Observable<Mesa>{
-    var _mesa: any = {
-      // TODO: Necesito obtener el siguiente id de la mesa
-      id: 0,
-      nombre: "Nueva Mesa",
-      posicion: {
-        x: 10,
-        y: 10
-      },
-      alumno: null
+  public addMesa(mesa: Mesa): Observable<Mesa>{
+    var _mesa = {
+      data: {
+        NombreMesa: mesa.nombre,
+        posicion: {
+          x: mesa.posicion.x,
+          y: mesa.posicion.y
+        },
+        AlumnoID: mesa.AlumnoID,
+      }
     };
-    return this.http.post(environment.ApiStrapiUrl+"/mesas", _mesa).pipe(tap(_=>{
+    return this.http.post("/mesas", _mesa).pipe(tap(_=>{
       this.getAll().subscribe();
     }))
   }
@@ -112,7 +114,7 @@ export class MesaService {
 
   public deleteMesa(mesa: Mesa): Observable<Mesa>{
     return new Observable<Mesa>(obs=>{
-      this.http.delete(environment.ApiStrapiUrl+`/mesas/${mesa.id}`).subscribe(_=>{
+      this.http.delete(`/mesas/${mesa.id}`).subscribe(_=>{
         this.getAll().subscribe(_=>{
           obs.next(mesa);
         });
