@@ -67,7 +67,7 @@ export class AlumnoService {
         fechaNacimiento: attributes.FechaNacimiento,
         email: attributes.Email
       };
-      console.log("Alumno mapeado "+ alumnoMapeado);
+      console.log("Alumno mapeado "+ alumnoMapeado.id);
       return alumnoMapeado;
     }))
   }

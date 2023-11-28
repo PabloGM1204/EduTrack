@@ -55,7 +55,7 @@ export class HomePage {
           // Asumiendo que tienes valores predeterminados o nulos para estos campos
           id: 0, // O cualquier lógica para asignar un nuevo ID
           posicion: { x: 0, y: 0 }, // Posición inicial predeterminada
-          AlumnoID: '' // O cualquier valor predeterminado
+          AlumnoID: 0 // O cualquier valor predeterminado
         };
         console.log('Nueva Mesa:', nuevaMesa);
         this.mesas.addMesa(nuevaMesa).subscribe({
@@ -80,7 +80,7 @@ export class HomePage {
           x: mesa.posicion.x,
           y: mesa.posicion.y
         },
-        AlumnoID: mesa.AlumnoID
+        AlumnoID: info.data.alumnoId
       }
       console.log(nuevaMesa)
       switch(info.role){

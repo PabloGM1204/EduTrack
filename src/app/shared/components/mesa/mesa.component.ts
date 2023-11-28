@@ -18,10 +18,7 @@ export class MesaComponent  implements OnInit {
     private mesaService: MesaService
   ) { }
 
-  ngOnInit() {
-    console.log("Posicion "+this.mesa?.posicion.x+" "+this.mesa?.posicion.y);
-    console.log(this.mesa?.nombre);
-  }
+  ngOnInit() {}
 
   // Al soltar el arrastre de la mesa
   dragEnded(event: CdkDragEnd) {

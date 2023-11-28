@@ -11,6 +11,7 @@ import { AlumnoItemComponent } from './components/alumno-item/alumno-item.compon
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.component';
+import { AlumnoSelectableComponent } from './components/alumno-selectable/alumno-selectable.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.
     AlumnoItemComponent,
     LoginFormComponent,
     HeaderComponent,
-    AlumnoDetailComponent
+    AlumnoDetailComponent,
+    AlumnoSelectableComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.
     AlumnoItemComponent,
     LoginFormComponent,
     HeaderComponent,
-    AlumnoDetailComponent
+    AlumnoDetailComponent,
+    AlumnoSelectableComponent
   ]
 })
 export class SharedModule { }

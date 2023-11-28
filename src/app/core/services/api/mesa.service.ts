@@ -21,11 +21,11 @@ export class MesaService {
 
   public getAll(): Observable<Mesa[]>{
     
-    return this.http.get('/mesas').pipe(map(response => response.data.map((item: { id: any; attributes: { NombreMesa: any; posicion: any; MesaID: any; }; }) => ({
+    return this.http.get('/mesas/?populate=alumnoFK').pipe(map(response => response.data.map((item: { id: any; attributes: { NombreMesa: any; posicion: any; alumnoFK: any;}; }) => ({
       id: item.id,
       nombre: item.attributes.NombreMesa,
       posicion: item.attributes.posicion,
-      MesaID: item.attributes.MesaID
+      AlumnoID: item.attributes.alumnoFK.data?.id
     }))),
     tap(mesas => {
       console.log(mesas);
@@ -63,7 +63,7 @@ export class MesaService {
       data: {
         NombreMesa: mesa.nombre,
         posicion: mesa.posicion,
-        MesaID: mesa.AlumnoID
+        alumnoFK: mesa.AlumnoID
       }
     }
     return new Observable<Mesa>(obs => {
