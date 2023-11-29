@@ -10,18 +10,34 @@ import { AuthService } from 'src/app/core/services/api/strapi/auth.service';
 })
 export class LoginPage implements OnInit {
 
+  componenteLogin = true;
+
   constructor(
     private auth: AuthService,
     private router: Router
   ) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  cambioComponente(){
+    this.componenteLogin = !this.componenteLogin
   }
 
   // Método para hacer el login
   // al hacer click recibe los datos para el login y hacemos el login, en caso de ir bien pasaria al home
   onLogin(credenciales: UserCredentials){
     this.auth.login(credenciales).subscribe({
+      next: data => {
+        this.router.navigate(['/home']);
+      },
+      error: err => {
+        console.log(err)
+      }
+    })
+  }
+
+  onRegister(credenciales: UserCredentials){
+    this.auth.register(credenciales).subscribe({
       next: data => {
         this.router.navigate(['/home']);
       },

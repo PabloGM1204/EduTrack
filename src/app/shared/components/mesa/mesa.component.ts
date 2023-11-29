@@ -10,6 +10,8 @@ import { CdkDragEnd } from '@angular/cdk/drag-drop';
 })
 export class MesaComponent  implements OnInit {
 
+  seEstaMoviendo = false;
+
   @Input() mesa: Mesa | null = null;
 
   @Output() mesaClicked: EventEmitter<void> = new EventEmitter<void>();
@@ -19,6 +21,11 @@ export class MesaComponent  implements OnInit {
   ) { }
 
   ngOnInit() {}
+
+  onDragStarted(event: any){
+    this.seEstaMoviendo = true;
+    console.log("Started"+this.seEstaMoviendo)
+  }
 
   // Al soltar el arrastre de la mesa
   dragEnded(event: CdkDragEnd) {
@@ -56,6 +63,11 @@ export class MesaComponent  implements OnInit {
         error: (err) => console.error('Error al actualizar la mesa', err)
       });
     }
+    setTimeout(() => {
+      this.seEstaMoviendo = false;
+      console.log("Ended"+this.seEstaMoviendo)
+
+    }, 100)
   }
 
   // Método para obtener la posición del elemento padre con respecto al viewPort, recibe el elemento padre al elementro arrastrado
@@ -78,6 +90,9 @@ export class MesaComponent  implements OnInit {
 
 
   mesaClick(){
-    this.mesaClicked.emit();
+    console.log("Click"+this.seEstaMoviendo)
+    if(!this.seEstaMoviendo){
+      this.mesaClicked.emit();
+    }
   }
 }
