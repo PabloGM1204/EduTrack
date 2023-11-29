@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { MesaService } from 'src/app/core/services/api/mesa.service';
 import { Mesa } from 'src/app/core/interfaces/mesa';
 import { ModalController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { ModalSelectionComponent } from 'src/app/shared/components/modal-selection/modal-selection.component';
 import { BehaviorSubject } from 'rxjs';
+import { AlumnoService } from 'src/app/core/services/api/alumno.service';
 
 @Component({
   selector: 'app-home',
@@ -17,15 +17,15 @@ export class HomePage {
   public mesas$ = this._mesas.asObservable();
 
   constructor(
-    public mesas: MesaService,
+    public mesasSvc: MesaService,
     private modal: ModalController,
-    private rotuer: Router
+    private alumnoSvc: AlumnoService
   ) {}
 
   //TODO: añadir loading
 
   private loadMesas(){
-    this.mesas.getAll().subscribe({
+    this.mesasSvc.getAll().subscribe({
       next: response => {
         this._mesas.next(response);
       },
@@ -36,7 +36,15 @@ export class HomePage {
   }
 
   ngOnInit(): void{
-    this.mesas.getAll().subscribe()
+    this.mesasSvc.getAll().subscribe(mesas => {
+      mesas.forEach(mesa => {
+        if (mesa.AlumnoID) {
+          this.alumnoSvc.getAlumno(mesa.AlumnoID).subscribe(alumno => {
+            mesa.alumnoNombre = alumno.nombre; // Asegúrate de tener un campo para almacenar el nombre del alumno en tu modelo de mesa
+          });
+        }
+      });
+    })
     //this.loadMesas();
     console.log(this._mesas.value)
 
@@ -44,7 +52,7 @@ export class HomePage {
   }
 
   recargarMesas(){
-    this.mesas.actualizarPosicionesMesas();
+    this.mesasSvc.actualizarPosicionesMesas();
   }
 
   crearMesa() {
@@ -58,7 +66,7 @@ export class HomePage {
           AlumnoID: 0 // O cualquier valor predeterminado
         };
         console.log('Nueva Mesa:', nuevaMesa);
-        this.mesas.addMesa(nuevaMesa).subscribe({
+        this.mesasSvc.addMesa(nuevaMesa).subscribe({
           next: mesaCreada => {
             console.log('Mesa creada:', mesaCreada);
             // Aquí puedes recargar las mesas o actualizar la UI según sea necesario
@@ -85,11 +93,11 @@ export class HomePage {
       console.log(nuevaMesa)
       switch(info.role){
         case 'ok': {
-          this.mesas.updateMesa(nuevaMesa).subscribe()
+          this.mesasSvc.updateMesa(nuevaMesa).subscribe()
         }
         break;
         case 'delete': {
-          this.mesas.deleteMesa(nuevaMesa).subscribe()
+          this.mesasSvc.deleteMesa(nuevaMesa).subscribe()
         }
       }
     }

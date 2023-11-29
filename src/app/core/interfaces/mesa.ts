@@ -5,5 +5,6 @@ export interface Mesa {
         x: number;
         y: number;
     };
-    AlumnoID: number
+    AlumnoID: number,
+    alumnoNombre?: string
 }
