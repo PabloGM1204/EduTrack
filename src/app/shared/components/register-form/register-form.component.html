@@ -1,0 +1,14 @@
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()" (key.enter)="onSubmit()">
+  <ion-item>
+    <ion-input labelPlacement="stacked" label="Username" formControlName="username" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input labelPlacement="stacked" label="Email" formControlName="email" type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input labelPlacement="stacked" label="Contraseña" formControlName="password" type="password"></ion-input>
+  </ion-item>
+  <div class="ion-text-end">
+    <ion-button style="text-transform: none;" [disabled]="!form.valid" (click)="onSubmit()">Crear cuenta</ion-button>
+  </div>
+</form>
