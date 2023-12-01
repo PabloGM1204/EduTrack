@@ -11,6 +11,11 @@ import { AlumnoItemComponent } from './components/alumno-item/alumno-item.compon
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.component';
+import { AlumnoSelectableComponent } from './components/alumno-selectable/alumno-selectable.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { createTranslateLoader } from '../core/translate/translate';
+import { HttpClient } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,7 +31,9 @@ import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.
     AlumnoItemComponent,
     LoginFormComponent,
     HeaderComponent,
-    AlumnoDetailComponent
+    AlumnoDetailComponent,
+    AlumnoSelectableComponent,
+    RegisterFormComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +41,14 @@ import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    DragDropModule
+    DragDropModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [
     // Modulos
@@ -42,6 +56,7 @@ import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.
     IonicModule,
     FormsModule,
     DragDropModule,
+    TranslateModule,
     // Directivas
 
     // Componentes
@@ -51,7 +66,9 @@ import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.
     AlumnoItemComponent,
     LoginFormComponent,
     HeaderComponent,
-    AlumnoDetailComponent
+    AlumnoDetailComponent,
+    AlumnoSelectableComponent,
+    RegisterFormComponent
   ]
 })
 export class SharedModule { }

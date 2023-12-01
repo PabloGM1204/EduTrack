@@ -60,25 +60,18 @@ export class AuthStrapiService extends AuthService {
   }
 
   // Método para registrarse
-  // Lo que hace es coger la info que ponemos en el formulario y pasarla a la tabla de extender_user, se lo pasamos al strapi y le decimos a la variable de log que se ha logeado
-  public register(info: UserRegisterInfo): Observable<void> {
+  public register(info: any): Observable<void> {
     return new Observable<void>(obs => {
-      const _info: StrapiRegisterPayLoad = {
+      const _info = {
         email: info.email,
-        password: info.password,
-        username: info.nickname
+        username: info.username,
+        password: info.password
       }
-      this.apiSvc.post("auth/local/register", info).subscribe({
+      this.apiSvc.post("/auth/local/register", _info).subscribe({
         next:async (data:StrapiRegisterResponse) => {
           let connected = data && data.jwt != "";
           this._logged.next(connected);
           await lastValueFrom(this.jwtSvc.saveToken(data.jwt));
-          const _extended_user: StrapiExtendedUser = {
-            name: info.name,
-            surname: info.surname,
-            user_id: data.user.id
-          }
-          await lastValueFrom(this.apiSvc.post("/extended_user", _extended_user)).catch;
           obs.next();
           obs.complete();
         },

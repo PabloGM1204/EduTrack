@@ -9,7 +9,6 @@ import { UserCredentials } from 'src/app/core/interfaces/user-credentials';
 })
 export class LoginFormComponent  implements OnInit {
 
-  // Sirve para poder guardar el username en el navegador
   @Input('username') set username(value: string){
     this.form?.controls['username'].setValue(value);
   }
