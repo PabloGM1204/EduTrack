@@ -1,0 +1,22 @@
+{
+    "main":{
+        "hello":"Hola"
+    },
+    "login":{
+        "user":"Email",
+        "pwd":"Contraseña",
+        "noAccount":"¿Necesitas una cuenta?",
+        "submit":"Acceder"
+    },
+    "alumnos":{
+        "nombre":"Nombre",
+        "fechaNacimiento":"Fecha-Nacimiento",
+        "email": "Email",
+        "acciones": "Acciones",
+        "selector": "Seleccione un alumno",
+        "ninguno": "Ninguno"
+    },
+    "cambios":{
+        "guardar": "Guardar"
+    }
+}

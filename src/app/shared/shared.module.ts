@@ -13,6 +13,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { AlumnoDetailComponent } from './components/alumno-detail/alumno-detail.component';
 import { AlumnoSelectableComponent } from './components/alumno-selectable/alumno-selectable.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { createTranslateLoader } from '../core/translate/translate';
+import { HttpClient } from '@angular/common/http';
 
 
 @NgModule({
@@ -38,7 +41,14 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    DragDropModule
+    DragDropModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [
     // Modulos
@@ -46,6 +56,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
     IonicModule,
     FormsModule,
     DragDropModule,
+    TranslateModule,
     // Directivas
 
     // Componentes

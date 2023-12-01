@@ -13,6 +13,8 @@ import { ApiService } from './core/services/api/api.service';
 import { AuthStrapiService } from './core/services/api/strapi/auth-strapi.service';
 import { JwtService } from './core/services/jwt.service';
 import { SharedModule } from './shared/shared.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { createTranslateLoader } from './core/translate/translate';
 
 export function httpProviderFactory(http: HttpClient) {
   return new HttpClientWebProvider(http);
@@ -29,7 +31,14 @@ export function AuthServiceProvider(jwt: JwtService, api: ApiService) {
     IonicModule.forRoot(), 
     AppRoutingModule, 
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

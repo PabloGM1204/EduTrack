@@ -9,6 +9,6 @@
     <ion-input labelPlacement="stacked" label="Contraseña" formControlName="password" type="password"></ion-input>
   </ion-item>
   <div class="ion-text-end">
-    <ion-button style="text-transform: none;" [disabled]="!form.valid" (click)="onSubmit()">Crear cuenta</ion-button>
+    <ion-button style="text-transform: none;" [disabled]="!form.valid" (click)="onSubmit()">{{"login.noAccount" | translate}}</ion-button>
   </div>
 </form>

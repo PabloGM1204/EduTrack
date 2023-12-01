@@ -15,6 +15,6 @@
     <ion-button color="primary" fill="clear" (click)="onDelete()">
       <ion-icon slot="icon-only" name="trash-outline"/>
     </ion-button>
-    <ion-button type="submit" [disabled]="!form.valid || !form.dirty" class="ion-padding" expand="full" (click)="onSubmit()">Guardar</ion-button>
+    <ion-button type="submit" [disabled]="!form.valid || !form.dirty" class="ion-padding" expand="full" (click)="onSubmit()">{{"cambios.guardar" | translate}}</ion-button>
   </ion-buttons>
 </div>
