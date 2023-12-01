@@ -22,5 +22,10 @@
   <div class="ion-page" id="main-content">
     <app-header *ngIf="auth.isLogged$ | async"></app-header>
     <ion-router-outlet></ion-router-outlet>
+    <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="false">
+      <ion-fab-button (click)="onLang()">
+        <ion-label>{{translate.language$ | async | uppercase}}</ion-label>
+      </ion-fab-button>
+    </ion-fab>
   </div>
 </ion-app>
