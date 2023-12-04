@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: ':dato',
     component: InfoPage
+  },
+  {
+    path: ':dato/:id',
+    component: InfoPage
   }
 ];
 

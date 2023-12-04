@@ -1,0 +1,18 @@
+<ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col class="column-header">ID</ion-col>
+        <ion-col class="column-header">Calificación</ion-col>
+        <ion-col class="column-header">Fecha</ion-col>
+        <ion-col class="column-header">Descripción</ion-col>
+        <ion-col class="column-header">Asignatura</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let nota of notas">
+        <ion-col>{{ nota.id }}</ion-col>
+        <ion-col>{{ nota.calificacion }}</ion-col>
+        <ion-col>{{ nota.fecha }}</ion-col>
+        <ion-col>{{ nota.descripcion }}</ion-col>
+        <ion-col>{{ nota.asignatura }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>

@@ -5,11 +5,17 @@
         <ion-icon slot="icon-only" name="arrow-back-outline"/>
       </ion-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title *ngIf="dato !== 'notas'">
       {{(dato == 'New'?'Nuevo Alumno':'Editar alumno')}}
     </ion-title>
+    <ion-title *ngIf="dato == 'notas'">
+      Notas
+    </ion-title>
   </ion-toolbar>
-  <app-alumno-detail
+  <app-notas *ngIf="dato == 'notas'"
+  [notas]="notas">
+  </app-notas>
+  <app-alumno-detail *ngIf="dato !== 'notas'"
     [alumno]="alumnoSeleccionado" 
     (onsubmit)="onSubmit($event)">
   </app-alumno-detail>

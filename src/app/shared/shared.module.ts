@@ -16,6 +16,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { createTranslateLoader } from '../core/translate/translate';
 import { HttpClient } from '@angular/common/http';
+import { NotasComponent } from './components/notas/notas.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { HttpClient } from '@angular/common/http';
     HeaderComponent,
     AlumnoDetailComponent,
     AlumnoSelectableComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    NotasComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +70,8 @@ import { HttpClient } from '@angular/common/http';
     HeaderComponent,
     AlumnoDetailComponent,
     AlumnoSelectableComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    NotasComponent
   ]
 })
 export class SharedModule { }
