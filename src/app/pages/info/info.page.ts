@@ -36,9 +36,7 @@ export class InfoPage implements OnInit {
     console.log("Que me llega a info: "+this.dato);
     if(this.dato == 'notas'){
       console.log("estamos en las notas y este es el id"+ this.id)
-      this.notasSvc.getNotasPorAlumno(this.id).subscribe(notas => {
-        this.notas = notas
-      })
+      this.cargarNotas(this.id);
     } else if(this.dato != 'New'){
       this.dato = Number(this.dato)
       this.cargarAlumno(this.dato)
@@ -69,6 +67,43 @@ export class InfoPage implements OnInit {
     this.alumnoSvc.getAlumno(id).subscribe(_ => {
       this.alumnoSeleccionado = _;
       console.log(this.alumnoSeleccionado)
+    });
+  }
+
+  anadirNota(nota: Nota){
+    this.notasSvc.addNota(nota).subscribe({
+      next: () => {
+        this.cargarNotas(this.id)
+      }
+    })
+  }
+
+  editarNotar(nota: Nota){
+    this.notasSvc.updateNota(nota).subscribe({
+      next: (notaModificada) => {
+        // Encuentra el índice de la nota actualizada en la lista local
+        const index = this.notas.findIndex(nota => nota.id === notaModificada.id);
+        if (index !== -1) {
+          // Actualiza la nota en la lista local
+          this.notas[index] = notaModificada;
+          this.notas = [...this.notas];
+        }
+      },
+      error: (error) => {
+        console.error("Error al actualizar la nota", error);
+      }
+    });
+  }
+
+  eliminarNota(nota: Nota){
+    this.notasSvc.deleteNota(nota).subscribe(notas => {
+      this.notas = notas;
+    })
+  }
+
+  cargarNotas(alumnoId: number) {
+    this.notasSvc.getNotasPorAlumno(alumnoId).subscribe(notas => {
+      this.notas = notas;
     });
   }
 

@@ -91,11 +91,11 @@ public updateNota(_nota: Nota): Observable<Nota> {
   })
 }
 
-public deleteNota(nota: Nota): Observable<Nota>{
-  return new Observable<Nota>(obs=>{
+public deleteNota(nota: Nota): Observable<Nota[]>{
+  return new Observable<Nota[]>(obs=>{
     this.http.delete(`/notas/${nota.id}`).subscribe(_=>{
-      this.getNotasPorAlumno(nota.id).subscribe(_=>{
-        obs.next(nota);
+      this.getNotasPorAlumno(nota.id).subscribe(notasNuevas=>{
+        obs.next(notasNuevas);
       });
     });
   });

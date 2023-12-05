@@ -14,7 +14,10 @@
   </ion-toolbar>
   <app-notas *ngIf="dato == 'notas'"
   [notas]="notas"
-  [alumnoId]="id">
+  [alumnoId]="id"
+  (nuevaNota)="anadirNota($event)"
+  (quitarNota)="eliminarNota($event)"
+  (actualizarNota)="editarNotar($event)">
   </app-notas>
   <app-alumno-detail *ngIf="dato !== 'notas'"
     [alumno]="alumnoSeleccionado" 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Nota } from 'src/app/core/interfaces/nota';
 import { ModalNotaComponent } from '../modal-nota/modal-nota.component';
 import { ModalController } from '@ionic/angular';
@@ -14,6 +14,10 @@ export class NotasComponent  implements OnInit {
   @Input() notas: Nota[] = [];
   @Input() alumnoId: number = 0;
 
+  @Output() actualizarNota: EventEmitter<Nota> = new EventEmitter<Nota>();
+  @Output() quitarNota: EventEmitter<Nota> = new EventEmitter<Nota>();
+  @Output() nuevaNota: EventEmitter<Nota> = new EventEmitter<Nota>();
+
   constructor(
     private modal: ModalController,
     private notasSvc: NotasService
@@ -23,7 +27,7 @@ export class NotasComponent  implements OnInit {
     console.log(this.notas)
   }
 
-  nuevaNota(){
+  anadirNota(){
     var onDismiss = (info:any)=>{
       console.log(info);
       switch(info.role){
@@ -38,7 +42,7 @@ export class NotasComponent  implements OnInit {
             alumnoNombre: ""
           }
           console.log(_nota)
-          this.notasSvc.addNota(_nota).subscribe()
+          this.nuevaNota.emit(_nota);
         }
         break;
         default:{
@@ -63,8 +67,8 @@ export class NotasComponent  implements OnInit {
             id: nota.id,
             alumnoNombre: ""
           }
-          console.log(_nota)
-          this.notasSvc.updateNota(_nota).subscribe()
+          console.log(_nota);
+          this.actualizarNota.emit(_nota);
         }
         break;
         default:{
@@ -76,7 +80,7 @@ export class NotasComponent  implements OnInit {
   }
 
   eliminarNota(nota: Nota){
-    this.notasSvc.deleteNota(nota).subscribe()
+    this.quitarNota.emit(nota)
   }
 
   async presentForm(data: Nota | null, onDismiss:(result:any)=>void){
