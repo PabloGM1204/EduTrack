@@ -17,6 +17,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { createTranslateLoader } from '../core/translate/translate';
 import { HttpClient } from '@angular/common/http';
 import { NotasComponent } from './components/notas/notas.component';
+import { ModalNotaComponent } from './components/modal-nota/modal-nota.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { NotasComponent } from './components/notas/notas.component';
     AlumnoDetailComponent,
     AlumnoSelectableComponent,
     RegisterFormComponent,
-    NotasComponent
+    NotasComponent,
+    ModalNotaComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +73,8 @@ import { NotasComponent } from './components/notas/notas.component';
     AlumnoDetailComponent,
     AlumnoSelectableComponent,
     RegisterFormComponent,
-    NotasComponent
+    NotasComponent,
+    ModalNotaComponent
   ]
 })
 export class SharedModule { }

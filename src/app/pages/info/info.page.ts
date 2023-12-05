@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Alumno } from 'src/app/core/interfaces/alumno';
 import { Nota } from 'src/app/core/interfaces/nota';
 import { AlumnoService } from 'src/app/core/services/api/alumno.service';
 import { NotasService } from 'src/app/core/services/api/notas.service';
+import { ModalNotaComponent } from 'src/app/shared/components/modal-nota/modal-nota.component';
 
 @Component({
   selector: 'app-info',
@@ -69,5 +71,6 @@ export class InfoPage implements OnInit {
       console.log(this.alumnoSeleccionado)
     });
   }
+
 
 }

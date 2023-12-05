@@ -34,24 +34,6 @@ export class AlumnoService {
       }
     })
     )
-  
-    /*return this.http.get('/mesas').pipe(tap((mesas:any[])=>{
-    console.log(mesas)
-    this._mesas.next(mesas)
-  }))*/
-
-    /*
-  return new Observable(observer => {
-    let lista: Mesa[] = [
-      {id: 1, nombre: "Mesa 1", posicion:{x: 0, y:50}, alumno:{id: 1, nombre: "Alumno", foto:"FOTO"}},
-      {id: 2, nombre: "Mesa 2", posicion:{x: 150, y:50}, alumno:{id: 2, nombre: "Prueba", foto:"FOTO"}},
-      {id: 3, nombre: "Mesa 3", posicion:{x: 300, y:50}, alumno:{id: 3, nombre: "Testeo", foto:"FOTO"}}
-    ]
-    this._mesas.next(lista);
-    observer.next(lista);
-    observer.complete();
-  })
-  */
   }
 
   public query(q: string): Observable<Alumno[]>{

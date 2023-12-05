@@ -55,80 +55,50 @@ public getNotasPorAlumno(alumnoId: number): Observable<Nota[]>{
     this._notas.next(nota);
   })
   )
-
 }
 
-
-/*
-public getMesa(id: number): Observable<Mesa>{
-  return this.http.get(environment.ApiStrapiUrl+`/mesas/${id}`);
-}
-
-
-public updateMesa(mesa: Mesa): Observable<Mesa> {
-  console.log("Recibo mesa: "+mesa.posicion)
-  let actualizarMesa = {
+public addNota(nota: Nota): Observable<Nota>{
+  var _nota = {
     data: {
-      NombreMesa: mesa.nombre,
-      posicion: mesa.posicion,
-      alumnoFK: mesa.AlumnoID
-    }
-  }
-  return new Observable<Mesa>(obs => {
-    this.http.put(`/mesas/${mesa.id}`, actualizarMesa).subscribe({
-      next: (_) => {
-        obs.next(mesa); // Emitir la mesa actualizada
-        this.getAll().subscribe()
-      },
-      error: (err) => {
-        console.error('Error al actualizar la mesa:', err, 'Datos de la mesa:', actualizarMesa);
-        obs.error(err); // Emitir el error
-      },
-      complete: () => {
-        obs.complete(); // Completar el Observable
-      }
-    });
-  });
-}
-
-actualizarPosicionesMesas(): void {
-  // Copio el array que tengo de mesas, con el .map y copio los valores de cada mesa solo que le cambio la posición
-  const mesasActualizadas = this._mesas.value.map(mesa => ({
-    ...mesa,
-    posicion: { x: 0, y: 0 }
-  }));
-  console.log("Poner visible")
-  // Actualizamos todos las subscripciones
-  this._mesas.next(mesasActualizadas);
-}
-
-
-public addMesa(mesa: Mesa): Observable<Mesa>{
-  var _mesa = {
-    data: {
-      NombreMesa: mesa.nombre,
-      posicion: {
-        x: mesa.posicion.x,
-        y: mesa.posicion.y
-      },
-      AlumnoID: mesa.AlumnoID,
+      Calificacion: nota.calificacion,
+      Fecha: nota.fecha,
+      Asignatura: nota.asignatura,
+      Descripcion: nota.descripcion,
+      alumnoFK: nota.alumnoId
     }
   };
-  return this.http.post("/mesas", _mesa).pipe(tap(_=>{
-    this.getAll().subscribe();
+  return this.http.post("/notas", _nota).pipe(tap(_=>{
+    this.getNotasPorAlumno(nota.id).subscribe(); // Mirar para que se actualice
   }))
 }
 
+public updateNota(_nota: Nota): Observable<Nota> {
+  console.log(_nota.id)
+  let actualizarNota = {
+    data: {
+      Calificacion: _nota.calificacion,
+      Fecha: _nota.fecha,
+      Asignatura: _nota.asignatura,
+      Descripcion: _nota.descripcion,
+    }
+  }
+  return new Observable<Nota>(obs =>{
+    this.http.put(`/notas/${_nota.id}`, actualizarNota).subscribe(_=>{
+      console.log(_nota)
+      obs.next(_nota);
+      this.getNotasPorAlumno(_nota.id).subscribe()
+    })
+  })
+}
 
-public deleteMesa(mesa: Mesa): Observable<Mesa>{
-  return new Observable<Mesa>(obs=>{
-    this.http.delete(`/mesas/${mesa.id}`).subscribe(_=>{
-      this.getAll().subscribe(_=>{
-        obs.next(mesa);
+public deleteNota(nota: Nota): Observable<Nota>{
+  return new Observable<Nota>(obs=>{
+    this.http.delete(`/notas/${nota.id}`).subscribe(_=>{
+      this.getNotasPorAlumno(nota.id).subscribe(_=>{
+        obs.next(nota);
       });
     });
   });
 }
-*/
 
 }

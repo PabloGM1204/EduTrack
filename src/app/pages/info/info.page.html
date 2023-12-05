@@ -13,7 +13,8 @@
     </ion-title>
   </ion-toolbar>
   <app-notas *ngIf="dato == 'notas'"
-  [notas]="notas">
+  [notas]="notas"
+  [alumnoId]="id">
   </app-notas>
   <app-alumno-detail *ngIf="dato !== 'notas'"
     [alumno]="alumnoSeleccionado" 
