@@ -1,8 +1,33 @@
-.mesa{
+.mesa {
     position: absolute;
-    color: black;
-    margin-top: 20px;
-    width: 100px;
-    height: 100px;
-    background-color: white;
-}
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 150px; /* Ajuste según la necesidad */
+    cursor: move;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .mesa-info {
+    text-align: center;
+  }
+  
+  .mesa-nombre, .alumno-nombre {
+    margin: 5px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .mesa-nombre {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .alumno-nombre {
+    font-size: 0.8em;
+    color: #666;
+  }
