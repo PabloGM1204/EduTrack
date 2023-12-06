@@ -34,4 +34,9 @@ export class AlumnosPage implements OnInit {
     })
   }
 
+  actualizarNotas(id: number){
+    console.log("notas"+id)
+    this.router.navigate(['/info', 'notas', id]);
+  }
+
 }
