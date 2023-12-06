@@ -3,7 +3,7 @@
     <ion-item>
       <ion-input label="Nombre" labelPlacement="start" formControlName="nombre" type="text"></ion-input>
     </ion-item>
-    <app-alumno-selectable
+    <app-alumno-selectable *ngIf="mode == 'Edit'"
       formControlName="alumnoId">
     </app-alumno-selectable>
   </form>
