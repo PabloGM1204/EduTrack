@@ -1,4 +1,5 @@
-<div class="mesa" 
+<div class="mesa"
+  appZoom
   cdkDrag [ngStyle]="{'left.px': mesa?.posicion?.x, 'top.px': mesa?.posicion?.y}" 
   (cdkDragStarted)="onDragStarted($event)" 
   (cdkDragEnded)="dragEnded($event)" 

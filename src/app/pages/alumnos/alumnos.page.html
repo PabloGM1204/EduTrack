@@ -1,47 +1,33 @@
 <ion-content [fullscreen]="true" id="general">
-  <table>
-    <thead>
-      <tr>
-        <th>{{"alumnos.nombre" | translate}}</th>
-        <th>{{"alumnos.fechaNacimiento" | translate}}</th>
-        <th>{{"alumnos.email" | translate}}</th>
-        <th>{{"alumnos.acciones" | translate}}</th>
-        <th id="icono">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">{{"alumnos.nombre" | translate}}</ion-col>
+      <ion-col size="3">{{"alumnos.fechaNacimiento" | translate}}</ion-col>
+      <ion-col size="3">{{"alumnos.email" | translate}}</ion-col>
+      <ion-col size="3">
+        <div class="acciones-container">
+          <span>{{"alumnos.acciones" | translate}}</span>
           <ion-button fill="clear" (click)="crearAlumno()">
-            <ion-icon slot="icon-only" color="primary" name="person-add-outline" aria-hidden="true"></ion-icon>
+            <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
           </ion-button>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let alum of alumnosSvc.alumnos$ | async">
-        <td>
-          <app-alumno 
-          [name]="alum.nombre">
-          </app-alumno>
-        </td>
-        <td>
-          <app-alumno 
-          [fechaNacimiento]="alum.fechaNacimiento">
-          </app-alumno>
-        </td>
-        <td>
-          <app-alumno 
-          [email]="alum.email">
-          </app-alumno>
-        </td>
-        <td>
-          <ion-button fill="clear" (click)="editarAlumno(alum.id)">
-            <ion-icon name="create-outline"></ion-icon>
-          </ion-button>
-          <ion-button fill="clear" (click)="eliminarAlumno(alum)">
-            <ion-icon name="trash-outline"></ion-icon>
-          </ion-button>
-          <ion-button fill="clear" (click)="actualizarNotas(alum.id)">
-            <ion-icon name="id-card-outline"></ion-icon>
-          </ion-button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let alum of alumnosSvc.alumnos$ | async">
+      <ion-col size="3">{{ alum.nombre }}</ion-col>
+      <ion-col size="3">{{ alum.fechaNacimiento }}</ion-col>
+      <ion-col size="3">{{ alum.email }}</ion-col>
+      <ion-col size="3">
+        <ion-button fill="clear" (click)="editarAlumno(alum.id)">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" (click)="eliminarAlumno(alum)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" (click)="actualizarNotas(alum.id)">
+          <ion-icon name="id-card-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

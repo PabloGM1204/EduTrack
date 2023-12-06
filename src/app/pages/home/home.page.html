@@ -1,16 +1,9 @@
 <ion-content [fullscreen]="false">
 
-  <!--Boton para poner las mesas en 250, 250 en caso de perderlas de vista
-  <ion-button fill="clear" aria-label="Recargar Posicion" (click)="recargarMesas()">
-    <ion-icon slot="icon-only" color="primary" name="reload-outline" aria-hidden="true"></ion-icon>
-  </ion-button>-->
-
   <!--Botón para crear una nueva mesa-->
-  <ion-button fill="clear" aria-label="Recargar Posicion" (click)="crearMesa()" id="crear">
-    <ion-icon slot="icon-only" color="primary" name="add-outline" aria-hidden="true"></ion-icon>
+  <ion-button fill="clear" aria-label="Recargar Posicion" (click)="crearMesa()" class="boton-crear">
+    <ion-icon slot="icon-only" name="add-outline" aria-hidden="true"></ion-icon>
   </ion-button>
-
-  <!--TODO:zona de eliminación de mesas-->
   
   <div>
     <ng-container >

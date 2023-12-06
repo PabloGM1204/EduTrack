@@ -80,7 +80,7 @@ export class MesaComponent  implements OnInit {
       // Se suma la distancia horizontal (offsetLeft) del elemento actual a su contenedor padre (body), y se resta cualquier desplazamiento horizontal (scrollLeft) que pueda haber dentro del elemento. Esto da la posición horizontal del elemento relativa a su contenedor padre
       x += el.offsetLeft - el.scrollLeft;
       // Se suma la distancia vertical (offsetTop) y se resta el desplazamiento vertical (scrollTop), añadiendo un ajuste de 2.75 ya que si no baja un poco por un hueco que hay encima del padre
-      y += el.offsetTop - el.scrollTop + 2.75;
+      y += el.offsetTop - el.scrollTop;
       // Convertira "el" en un elemento null cuando no lo detecte
       el = el.offsetParent as HTMLElement;
     }

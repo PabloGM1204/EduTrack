@@ -18,12 +18,14 @@ import { createTranslateLoader } from '../core/translate/translate';
 import { HttpClient } from '@angular/common/http';
 import { NotasComponent } from './components/notas/notas.component';
 import { ModalNotaComponent } from './components/modal-nota/modal-nota.component';
+import { ZoomDirective } from './directives/zoom.directive';
+import { TruncamientoPipe } from './pipes/truncamiento.pipe';
 
 
 @NgModule({
   declarations: [
     // Directivas
-
+    ZoomDirective,
     // Pipes
 
     // Componentes
@@ -37,7 +39,8 @@ import { ModalNotaComponent } from './components/modal-nota/modal-nota.component
     AlumnoSelectableComponent,
     RegisterFormComponent,
     NotasComponent,
-    ModalNotaComponent
+    ModalNotaComponent,
+    TruncamientoPipe
   ],
   imports: [
     CommonModule,
@@ -62,7 +65,7 @@ import { ModalNotaComponent } from './components/modal-nota/modal-nota.component
     DragDropModule,
     TranslateModule,
     // Directivas
-
+    ZoomDirective,
     // Componentes
     MesaComponent,
     ModalSelectionComponent,
