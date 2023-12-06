@@ -67,25 +67,9 @@ export class AlumnoSelectableComponent  implements OnInit, ControlValueAccessor 
     this.disable = isDisabled;
   }
 
-
-  private async filter(value: string){
-    const query = value;
-    const alumnos = await lastValueFrom(this.alumnoSvc.query(query))
-    this.alumnos = alumnos.filter(a => a.nombre.toLowerCase().includes(query.toLowerCase()));
-  }
-
-  onFilter(evt: any){
-    this.filter(evt.detail.value)
-  }
-
   onAlumnoClicked(popover: IonPopover, alumno: Alumno){
     this.selectAlumno(alumno.id, true);
     popover.dismiss();
-  }
-
-  clearSearch(input: IonInput){
-    input.value = "";
-    this.filter("");
   }
 
   deselect(popover: IonPopover | null = null){

@@ -6,7 +6,9 @@
         "user":"Email",
         "pwd":"Contraseña",
         "noAccount":"¿Necesitas una cuenta?",
-        "submit":"Acceder"
+        "submit":"Acceder",
+        "boton":"Crear cuenta",
+        "boton2":"Ya tengo una cuenta"
     },
     "alumnos":{
         "nombre":"Nombre",

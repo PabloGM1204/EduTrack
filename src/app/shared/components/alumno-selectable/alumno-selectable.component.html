@@ -3,10 +3,6 @@
     <ion-text slot="start" position="fixed"></ion-text>
     <ion-text *ngIf="!alumnoSelected && !disable">{{"alumnos.selector" | translate}}</ion-text>
     <ion-text *ngIf="!alumnoSelected && disable">{{"alumnos.ninguno" | translate}}</ion-text>
-    <ion-avatar slot="start" *ngIf="alumnoSelected">
-      <ion-img *ngIf="alumnoSelected.foto" [src]="alumnoSelected.foto"></ion-img>
-      <img *ngIf="!alumnoSelected?.foto" alt="Silhouette" src="https://ionicframework.com/docs/img/demos/avatar.svg"/>
-    </ion-avatar>
     <ion-text *ngIf="alumnoSelected">{{alumnoSelected.nombre}}</ion-text>
   </ion-item>
 </div>
@@ -15,14 +11,7 @@
   <ng-template>
     <ion-content >
       <ion-list>
-        <ion-item>
-          <ion-input #search placeholder="Buscar" type="text" (ionInput)="onFilter($event)" debounce="200"></ion-input>
-          <ion-button color="medium" slot="end" fill="clear" (click)="clearSearch(search)"><ion-icon slot="icon-only" name="close-outline"></ion-icon></ion-button>
-        </ion-item>
         <ion-item button (click)="deselect(popover)">
-          <ion-avatar slot="start">
-            <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </ion-avatar> 
           <ion-text >{{"alumnos.ninguno" | translate}}</ion-text>
         </ion-item>
         <app-alumno-item

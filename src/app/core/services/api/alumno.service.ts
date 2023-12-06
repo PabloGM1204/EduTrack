@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, catchError, lastValueFrom, map, tap } from
 import { Alumno } from '../../interfaces/alumno';
 import { ApiService } from './api.service';
 import { environment } from 'src/environments/environment';
+import { MesaService } from './mesa.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AlumnoService {
   alumnos$: Observable<Alumno[]> = this._alumnos.asObservable();
 
   constructor(
-    private http: ApiService
+    private http: ApiService,
+    private mesaSvc: MesaService
   ) { }
 
   // ---------Métodos---------
@@ -69,6 +71,7 @@ export class AlumnoService {
         console.log(_alumno)
         obs.next(_alumno);
         this.getAll().subscribe()
+        this.mesaSvc.getAll().subscribe()
       })
     })
   }

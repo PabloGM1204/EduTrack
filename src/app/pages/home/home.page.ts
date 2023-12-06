@@ -13,34 +13,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class HomePage {
 
-  private _mesas = new BehaviorSubject<Mesa[]>([]);
-  public mesas$ = this._mesas.asObservable();
-
   constructor(
     public mesas: MesaService,
-    private modal: ModalController,
-    private rotuer: Router
+    private modal: ModalController
   ) {}
 
   //TODO: añadir loading
 
-  private loadMesas(){
-    this.mesas.getAll().subscribe({
-      next: response => {
-        this._mesas.next(response);
-      },
-      error: err => {
-        console.log(err)
-      }
-    });
-  }
-
   ngOnInit(): void{
     this.mesas.getAll().subscribe()
-    //this.loadMesas();
-    console.log(this._mesas.value)
-
-    //this.mesas.getAll().subscribe();
   }
 
   recargarMesas(){
@@ -53,7 +34,7 @@ export class HomePage {
         const nuevaMesa: Mesa = {
           nombre: info.data.nombre,
           id: 0,
-          posicion: { x: 0, y: 0 },
+          posicion: { x: 100, y: 100 },
           AlumnoID: 0
         };
         console.log('Nueva Mesa:', nuevaMesa);

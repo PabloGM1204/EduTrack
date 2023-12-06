@@ -11,12 +11,15 @@ import { Mesa } from 'src/app/core/interfaces/mesa';
 })
 export class ModalSelectionComponent  implements OnInit {
 
-  mode:'New'|'Edit' = 'New';
+  mode:'New' | 'Edit' | undefined;
   form:FormGroup;
   @Input() set mesa(_mesa: Mesa | null){
     if(_mesa){
       this.form.controls['alumnoId'].setValue(_mesa.AlumnoID);
       this.form.controls['nombre'].setValue(_mesa.nombre);
+      this.mode = 'Edit';
+    } else {
+      this.mode = 'New'
     }
   }
   
@@ -31,7 +34,9 @@ export class ModalSelectionComponent  implements OnInit {
     })
   }
   
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.mode)
+  }
 
   onSubmit(){
     console.log("Id nuevo del alumno: "+ this.form.value.alumnoId)
