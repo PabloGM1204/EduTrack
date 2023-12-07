@@ -19,8 +19,7 @@ export class NotasComponent  implements OnInit {
   @Output() nuevaNota: EventEmitter<Nota> = new EventEmitter<Nota>();
 
   constructor(
-    private modal: ModalController,
-    private notasSvc: NotasService
+    private modal: ModalController
   ) { }
 
   ngOnInit() {

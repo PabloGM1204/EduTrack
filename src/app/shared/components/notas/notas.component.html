@@ -4,23 +4,21 @@
     Nueva Nota
   </ion-button>
 </ion-content>
-<ion-content *ngIf="notas.length > 0">
+<ion-content *ngIf="notas.length > 0" [fullscreen]="true" id="general">
     <ion-grid>
       <ion-row>
-        <ion-col class="column-header">ID</ion-col>
-        <ion-col class="column-header">Calificación</ion-col>
-        <ion-col class="column-header">Fecha</ion-col>
-        <ion-col class="column-header">Asignatura</ion-col>
-        <ion-col class="column-header">Descripción</ion-col>
-        <ion-col class="column-header">Acciones</ion-col>
+        <ion-col size="2.5">Calificación</ion-col>
+        <ion-col size="2.5">Fecha</ion-col>
+        <ion-col size="2.5">Asignatura</ion-col>
+        <ion-col size="2.5">Descripción</ion-col>
+        <ion-col size="2">Acciones</ion-col>
       </ion-row>
       <ion-row *ngFor="let nota of notas">
-        <ion-col>{{ nota.id }}</ion-col>
-        <ion-col>{{ nota.calificacion }}</ion-col>
-        <ion-col>{{ nota.fecha }}</ion-col>
-        <ion-col>{{ nota.asignatura }}</ion-col>
-        <ion-col>{{ nota.descripcion }}</ion-col>
-        <ion-col>
+        <ion-col size="2.5">{{ nota.calificacion }}</ion-col>
+        <ion-col size="2.5">{{ nota.fecha }}</ion-col>
+        <ion-col size="2.5">{{ nota.asignatura }}</ion-col>
+        <ion-col size="2.5">{{ nota.descripcion | truncamiento:30 }}</ion-col>
+        <ion-col size="2">
           <ion-button fill="clear" (click)="editarNota(nota)">
             <ion-icon name="create-outline"></ion-icon>
           </ion-button>

@@ -1,4 +1,6 @@
-<ion-content [fullscreen]="true" id="general">
+<ion-loading [isOpen]="!mostrarContenido" class="custom-loading" message="Loading..."></ion-loading>
+
+<ion-content [fullscreen]="true" id="general" *ngIf="mostrarContenido">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-button color="primary" fill="clear" (click)="onCancel()">

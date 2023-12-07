@@ -25,7 +25,8 @@ export class MesaService {
       id: item.id,
       nombre: item.attributes.NombreMesa,
       posicion: item.attributes.posicion,
-      AlumnoID: item.attributes.alumnoFK.data?.id
+      AlumnoID: item.attributes.alumnoFK.data?.id,
+      AlumnoNombre: item.attributes.alumnoFK.data?.attributes.Nombre
     }))),
     tap(mesas => {
       console.log(mesas);
@@ -63,7 +64,7 @@ export class MesaService {
       data: {
         NombreMesa: mesa.nombre,
         posicion: mesa.posicion,
-        alumnoFK: mesa.AlumnoID
+        alumnoFK: mesa.AlumnoID !== undefined ? mesa.AlumnoID : null // Comprueba si el id es distinto undefined, si True pone el id si es False lo pone a null
       }
     }
     return new Observable<Mesa>(obs => {

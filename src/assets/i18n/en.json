@@ -5,8 +5,10 @@
     "login":{
         "user":"Email",
         "pwd":"Password",
-        "noAccount":"Need an account?",
-        "submit":"Access"
+        "noAccount":"Create Account",
+        "submit":"Access",
+        "boton":"Create account",
+        "boton2":"I have an account"
     },
     "alumnos":{
         "nombre": "Name",
