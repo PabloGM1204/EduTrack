@@ -5,9 +5,8 @@
       <ion-card-header>
         <div class="logo">
           <ion-thumbnail>
-            <img alt="logo of tasks" src="assets/imgs/logo-small.png" />
+            <img alt="logo of tasks" src="assets/imgs/logo-sin-fondo.png" />
           </ion-thumbnail>
-          <ion-text >Tasks</ion-text>
         </div>
 
       </ion-card-header>
@@ -19,6 +18,7 @@
         <app-login-form *ngIf="componenteLogin" (hacerLogin)="onLogin($event)"></app-login-form>
         <app-register-form *ngIf="!componenteLogin" (hacerRegister)="onRegister($event)"></app-register-form>
       </ion-card-content>
+      <p id="texto">Aplicacion de gestion sobre mesas, alumnos y sus notas</p>
     </ion-card>
   </div>
 

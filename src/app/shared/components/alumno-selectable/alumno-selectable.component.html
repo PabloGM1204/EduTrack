@@ -3,7 +3,7 @@
     <ion-text slot="start" position="fixed"></ion-text>
     <ion-text *ngIf="!alumnoSelected && !disable">{{"alumnos.selector" | translate}}</ion-text>
     <ion-text *ngIf="!alumnoSelected && disable">{{"alumnos.ninguno" | translate}}</ion-text>
-    <ion-text *ngIf="alumnoSelected">{{alumnoSelected.nombre}}</ion-text>
+    <ion-text *ngIf="alumnoSelected">{{alumnoSelected.nombre | primeraLetraMayusc}}</ion-text>
   </ion-item>
 </div>
 

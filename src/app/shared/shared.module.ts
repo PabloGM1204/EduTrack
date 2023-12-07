@@ -20,6 +20,7 @@ import { NotasComponent } from './components/notas/notas.component';
 import { ModalNotaComponent } from './components/modal-nota/modal-nota.component';
 import { ZoomDirective } from './directives/zoom.directive';
 import { TruncamientoPipe } from './pipes/truncamiento.pipe';
+import { PrimeraLetraMayuscPipe } from './pipes/primera-letra-mayusc.pipe';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { TruncamientoPipe } from './pipes/truncamiento.pipe';
     // Directivas
     ZoomDirective,
     // Pipes
-
+    PrimeraLetraMayuscPipe,
     // Componentes
     MesaComponent,
     ModalSelectionComponent,
@@ -40,7 +41,8 @@ import { TruncamientoPipe } from './pipes/truncamiento.pipe';
     RegisterFormComponent,
     NotasComponent,
     ModalNotaComponent,
-    TruncamientoPipe
+    TruncamientoPipe,
+    PrimeraLetraMayuscPipe
   ],
   imports: [
     CommonModule,
@@ -66,6 +68,8 @@ import { TruncamientoPipe } from './pipes/truncamiento.pipe';
     TranslateModule,
     // Directivas
     ZoomDirective,
+    // Pipes
+    PrimeraLetraMayuscPipe,
     // Componentes
     MesaComponent,
     ModalSelectionComponent,

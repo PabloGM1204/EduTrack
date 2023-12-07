@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   ApiJsonServerUrl: "http://localhost:3000",
-  ApiStrapiUrl: "http://localhost:1337/api"
+  ApiStrapiUrl: "https://edutrack-service.onrender.com/api"
 };
 
 /*

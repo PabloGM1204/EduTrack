@@ -14,7 +14,7 @@
       </ion-col>
     </ion-row>
     <ion-row *ngFor="let alum of alumnosSvc.alumnos$ | async">
-      <ion-col size="3">{{ alum.nombre }}</ion-col>
+      <ion-col size="3">{{ alum.nombre | primeraLetraMayusc}}</ion-col>
       <ion-col size="3">{{ alum.fechaNacimiento }}</ion-col>
       <ion-col size="3">{{ alum.email }}</ion-col>
       <ion-col size="3">

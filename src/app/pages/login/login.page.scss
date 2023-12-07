@@ -2,6 +2,7 @@ ion-content{
     min-height: 100vh;
     position: relative;
 }
+
 .container{
     min-height:0;
     margin:0 auto;
@@ -22,6 +23,11 @@ ion-content{
     }
 }
 
+ion-thumbnail{
+    width: 25%;
+    height: auto;
+}
+
 .logo{
     display:flex;
     justify-content: center;
@@ -29,4 +35,10 @@ ion-content{
     flex-direction: column;
     font-size:1.2rem;
     color:var(--ion-color-dark);
+}
+
+#texto {
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
 }
