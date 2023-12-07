@@ -21,6 +21,8 @@ export class InfoPage implements OnInit {
   alumnoSeleccionado: Alumno | undefined;
   notas: Nota[] = [];
 
+  mostrarContenido = false;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -41,6 +43,7 @@ export class InfoPage implements OnInit {
       this.dato = Number(this.dato)
       this.cargarAlumno(this.dato)
     }
+    setTimeout(() => { this.mostrarContenido = true },2000);
   }
   
 
