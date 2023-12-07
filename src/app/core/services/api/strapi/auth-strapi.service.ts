@@ -85,14 +85,14 @@ export class AuthStrapiService extends AuthService {
   // Método para poder recoger los datos del usuario que ha iniciado sesion
   public me(): Observable<User> {
     return new Observable<User>(obs => {
-      this.apiSvc.get('/user/me').subscribe({
-        next:async (user: User) => {
-          let extended_user = await lastValueFrom(this.apiSvc.get(`/extended-users?filters[user_id]=${user.id}`));
+      this.apiSvc.get('/users/me').subscribe({
+        next:async (user) => {
           let ret: User = {
             id: user.id,
-            name: user.name,
-            surname: user.surname
+            username: user.username,
+            email: user.email
           }
+          console.log("Datos del usuario"+ret.username)
           obs.next(ret);
           obs.complete();
         },

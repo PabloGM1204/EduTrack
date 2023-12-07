@@ -82,7 +82,7 @@ export class HomePage {
       componentProps:{
         mesa: data
       },
-      cssClass:"modal"
+      cssClass:"modal-selector"
     });
     modal.present();
     modal.onDidDismiss().then(result=>{

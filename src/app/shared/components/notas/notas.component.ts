@@ -88,7 +88,7 @@ export class NotasComponent  implements OnInit {
       componentProps:{
         nota: data
       },
-      cssClass:"modal"
+      cssClass:"modal-notas"
     });
     modal.present();
     modal.onDidDismiss().then(result=>{

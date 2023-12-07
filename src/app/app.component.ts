@@ -19,9 +19,13 @@ export class AppComponent {
     public translate: CustomTranslateService
   ) {
     this.auth.isLogged$.subscribe(logged => {
-      if(logged)
+      if(logged){
         this.rotuer.navigate(['/home']);
-      else
+        this.auth.me().subscribe(_ => {
+          console.log("Usuario logeado"+_.username)
+          this.user = _
+        })
+      } else
         this.rotuer.navigate(['/login'])
     });
     this.translate.use(this.lang)

@@ -56,7 +56,7 @@ export class InfoPage implements OnInit {
       this.cargarAlumno(this.dato)
     }
     // Para que cargue y en lo cargue este el loading
-    setTimeout(() => { this.mostrarContenido = true },2000);
+    setTimeout(() => {this.mostrarContenido = true},2000);
   }
   
   // Para volver a la página de alumnos
