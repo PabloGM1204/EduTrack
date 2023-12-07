@@ -21,7 +21,7 @@ export class InfoPage implements OnInit {
   alumnoSeleccionado: Alumno | undefined;
   notas: Nota[] = [];
 
-  mostrarContenido = false;
+  mostrarContenido: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +33,7 @@ export class InfoPage implements OnInit {
   }
 
   ngOnInit() {
+    this.mostrarContenido = false
     this.id = this.route.snapshot.paramMap.get('id');
     this.dato = this.route.snapshot.paramMap.get('dato');
     console.log("Que me llega a info: "+this.dato);
