@@ -11,7 +11,7 @@
         <ion-title>EduTrack</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content id="lista-paginas">
+    <ion-content>
       <ion-list>
         <ion-item (click)="menu.close()" [routerLink]="['/home']" button detail="false"><ion-icon slot="start" name="home"></ion-icon>Clase</ion-item>
         <ion-item (click)="menu.close()" [routerLink]="['/alumnos']" button detail="false"><ion-icon slot="start" name="checkbox-outline"></ion-icon>Alumnos</ion-item>
@@ -19,8 +19,8 @@
         <ion-item (click)="menu.close()" [routerLink]="['/profile']" button detail="false"><ion-icon slot="start" name="person-circle-outline"></ion-icon>Profile</ion-item>
       </ion-list>
     </ion-content>
-    <ion-item (click)="onLang()" button detail="false" *ngIf="auth.isLogged$"><ion-icon slot="start" name="globe-outline"></ion-icon>{{translate.language$ | async | uppercase}}</ion-item>
-    <ion-item (click)="onSingOut()" button detail="false"><ion-icon slot="start" name="log-out-outline"></ion-icon>Log out</ion-item>
+    <ion-item (click)="onLang()" button detail="false" *ngIf="auth.isLogged$" color="primary"><ion-icon slot="start" name="globe-outline"></ion-icon>{{translate.language$ | async | uppercase}}</ion-item>
+    <ion-item (click)="onSingOut()" button detail="false" color="danger"><ion-icon slot="start" name="log-out-outline"></ion-icon>Log out</ion-item>
   </ion-menu>
   <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="false" *ngIf="!auth.isLogged$">
     <ion-fab-button (click)="onLang()">

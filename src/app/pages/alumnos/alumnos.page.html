@@ -7,7 +7,7 @@
       <ion-col size="3">
         <div class="acciones-container">
           <span>{{"alumnos.acciones" | translate}}</span>
-          <ion-button fill="clear" (click)="crearAlumno()">
+          <ion-button fill="clear" (click)="crearAlumno()" color="secondary">
             <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
           </ion-button>
         </div>
@@ -18,13 +18,13 @@
       <ion-col size="3">{{ alum.fechaNacimiento }}</ion-col>
       <ion-col size="3">{{ alum.email }}</ion-col>
       <ion-col size="3">
-        <ion-button fill="clear" (click)="editarAlumno(alum.id)">
+        <ion-button fill="clear" (click)="editarAlumno(alum.id)" color="secondary">
           <ion-icon name="create-outline"></ion-icon>
         </ion-button>
-        <ion-button fill="clear" (click)="eliminarAlumno(alum)">
+        <ion-button fill="clear" (click)="eliminarAlumno(alum)" color="secondary">
           <ion-icon name="trash-outline"></ion-icon>
         </ion-button>
-        <ion-button fill="clear" (click)="actualizarNotas(alum.id)">
+        <ion-button fill="clear" (click)="actualizarNotas(alum.id)" color="secondary">
           <ion-icon name="id-card-outline"></ion-icon>
         </ion-button>
       </ion-col>
