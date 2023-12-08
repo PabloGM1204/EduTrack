@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/core/interfaces/user';
 
 @Component({
@@ -9,10 +10,14 @@ import { User } from 'src/app/core/interfaces/user';
 export class HeaderComponent  implements OnInit {
   
   @Input() user: User | undefined;
-  @Output() onSignout = new EventEmitter();
-  @Output() onProfile = new EventEmitter();
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {}
+
+  onProfile(){
+    this.router.navigate(['/profile'])
+  }
 
 }

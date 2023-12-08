@@ -7,10 +7,6 @@ ion-card-title {
     font-size: 1.5em;
 }
   
-ion-item {
-    --ion-background-color: transparent;
-}
-  
 ion-item a {
     color: #3880ff;
     text-decoration: none;
@@ -31,4 +27,12 @@ ion-item a:hover {
     max-width: 100px;
     border-radius: 50%;
     margin-right: 20px;
+}
+
+ion-card .list-md {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
 }

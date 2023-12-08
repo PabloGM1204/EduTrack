@@ -102,4 +102,13 @@ export class AuthStrapiService extends AuthService {
       })
     })
   }
+
+  // Método para eliminar a un usuario en el caso de que quieras borrar la cuenta
+  public deleteAccount(id: number): Observable<void>{
+    return new Observable<void>(obs=>{
+      this.apiSvc.delete(`/users/${id}`).subscribe(_=>{
+        console.log("Usuario eliminado")
+      });
+    });
+  }
 }

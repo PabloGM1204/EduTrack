@@ -22,4 +22,6 @@ export abstract class AuthService {
   public abstract logOut(): Observable<void>;
 
   public abstract me(): Observable<any>;
+
+  public abstract deleteAccount(id: number): Observable<void>;
 }
