@@ -27,9 +27,8 @@ Este proyecto es una aplicación web desarrollada con Angular e Ionic que permit
   - **Perfil:** Permite a los usuarios ver y editar su perfil después de iniciar sesión.
   - **Sobre el Desarrollador:** Proporciona información sobre el desarrollador de la aplicación.
 
+## Estructura de la BD
 
-## Requisitos Previos
 
-- Asegúrate de tener Node.js y npm instalados en tu máquina.
 
-## Configuración y Uso
+## Vide de uso de la aplicación
