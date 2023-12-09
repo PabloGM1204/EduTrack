@@ -70,6 +70,6 @@
         "texto2": "Deben coincidir las contraseñas",
         "nombreUsuario": "Nombre de usuario",
         "contraseña": "Contraseña",
-        "confirmación": "Repita la contraseña"
+        "confirmacion": "Repita la contraseña"
     }
 }

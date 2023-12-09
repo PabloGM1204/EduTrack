@@ -9,7 +9,7 @@
         "submit":"Access",
         "boton":"Create account",
         "boton2":"I have an account",
-        "texto": "Aplicacion de gestion sobre mesas, alumnos y sus notas"
+        "texto": "Management application for tables, students and their notes"
     },
     "lateral":{
         "clase": "Classroom",
@@ -70,6 +70,6 @@
         "texto2": "Passwords must match",
         "nombreUsuario": "Username",
         "contraseña": "Password",
-        "confirmación": "Repeat password"
+        "confirmacion": "Repeat password"
     }
 }
