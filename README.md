@@ -2,6 +2,10 @@
 
 ![EduTrack](/src/assets/imgs/logo-edutrack.jpg)
 
+## Página WEB
+
+https://main--cool-starburst-6a6684.netlify.app/home
+
 ## Descripción
 
 Este proyecto es una aplicación web desarrollada con Angular e Ionic que permite gestionar las mesas de una clase con alumnos y sus respectivas notas. La aplicación utiliza las tecnologías Capacitor, Strapi, Render y Netlify para ofrecer una experiencia completa y escalable.
