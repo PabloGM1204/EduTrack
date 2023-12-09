@@ -11,6 +11,7 @@ import { CustomTranslateService } from './core/services/custom-translate.service
 })
 export class AppComponent {
 
+  primera: boolean = true;
   lang: string = "es";
   user: User | undefined
   constructor(
@@ -24,9 +25,11 @@ export class AppComponent {
         this.auth.me().subscribe(_ => {
           console.log("Usuario logeado"+_.username)
           this.user = _
+          this.primera = false
         })
       } else
         this.rotuer.navigate(['/login'])
+        this.primera = true
     });
     this.translate.use(this.lang)
   }

@@ -22,7 +22,7 @@
     <ion-item (click)="onLang()" button detail="false" *ngIf="auth.isLogged$" color="primary"><ion-icon slot="start" name="globe-outline"></ion-icon>{{translate.language$ | async | uppercase}}</ion-item>
     <ion-item (click)="onSingOut()" button detail="false" color="danger"><ion-icon slot="start" name="log-out-outline"></ion-icon>{{"lateral.logout" | translate}}</ion-item>
   </ion-menu>
-  <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="false" *ngIf="!auth.isLogged$">
+  <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="false" *ngIf="primera">
     <ion-fab-button (click)="onLang()">
       <ion-label>{{translate.language$ | async | uppercase}}</ion-label>
     </ion-fab-button>
