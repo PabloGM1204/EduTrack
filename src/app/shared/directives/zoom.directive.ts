@@ -8,14 +8,14 @@ export class ZoomDirective {
   constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   @HostListener('cdkDragStarted')
-onDragStart() {
-  this.renderer.addClass(this.el.nativeElement, 'zoomed');
-}
+  onDragStart() {
+    this.renderer.addClass(this.el.nativeElement, 'zoomed');
+  }
 
-@HostListener('cdkDragEnded')
-onDragEnd() {
-  this.renderer.removeClass(this.el.nativeElement, 'zoomed');
-}
+  @HostListener('cdkDragEnded')
+  onDragEnd() {
+    this.renderer.removeClass(this.el.nativeElement, 'zoomed');
+  }
   
   /*@HostListener('cdkDragStarted')
   onDragStart() {
