@@ -1,4 +1,15 @@
 ion-content {
     top: 55px;
-    --background: rgba(0, 87, 175, 0.737);
+    --background: rgba(0, 44, 89, 0.737);
 }
+
+.title{
+    text-align: center;
+    margin-left: -60px;
+}
+
+ion-toolbar{
+    --background: transparent;
+}
+
+

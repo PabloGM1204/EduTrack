@@ -8,11 +8,12 @@
         "noAccount":"Create Account",
         "submit":"Access",
         "boton":"Create account",
-        "boton2":"I have an account"
+        "boton2":"I have an account",
+        "texto": "Aplicacion de gestion sobre mesas, alumnos y sus notas"
     },
     "lateral":{
         "clase": "Classroom",
-        "alumno": "Pupils",
+        "alumno": "Students",
         "about": "About",
         "profile": "Profile",
         "logout": "Log out"
@@ -22,7 +23,7 @@
         "fechaNacimiento": "Birthdate",
         "email": "Email",
         "acciones": "Actions",
-        "selector": "Select one pupil",
+        "selector": "Select one student",
         "ninguno": "None"
     },
     "about":{
@@ -35,6 +36,40 @@
         "texto6": "Developer Information"
     },
     "cambios":{
-        "guardar": "Save"
+        "guardar": "Save",
+        "loading": "Loading"
+    },
+    "info":{
+        "nuevoAlumno": "New student",
+        "editarAlumno": "Edit student",
+        "notas": "Marks"
+    },
+    "profile":{
+        "title": "Personal Information",
+        "name": "Name: ",
+        "logOut": "Log out",
+        "deleteAccount": "Delete Account"
+    },
+    "modalNota":{
+        "calificacion": "Calification",
+        "fecha": "Date",
+        "asignatura": "Subject",
+        "descripcion": "Description"
+    },
+    "nota":{
+        "texto": "No marks for this student.",
+        "boton": "New mark",
+        "calificacion": "Calification",
+        "fecha": "Date",
+        "asignatura": "Subject",
+        "descripcion": "Description",
+        "acciones": "Actions"
+    },
+    "register": {
+        "texto": "Must have 8 characters, at least one number and one uppercase letter",
+        "texto2": "Passwords must match",
+        "nombreUsuario": "Username",
+        "contraseña": "Password",
+        "confirmación": "Repeat password"
     }
 }

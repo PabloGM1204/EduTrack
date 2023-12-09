@@ -5,10 +5,11 @@
     "login":{
         "user":"Email",
         "pwd":"Contraseña",
-        "noAccount":"¿Necesitas una cuenta?",
+        "noAccount":"Crear cuenta",
         "submit":"Acceder",
         "boton":"Crear cuenta",
-        "boton2":"Ya tengo una cuenta"
+        "boton2":"Ya tengo una cuenta",
+        "texto": "Aplicacion de gestion sobre mesas, alumnos y sus notas"
     },
     "lateral":{
         "clase": "Clase",
@@ -35,6 +36,40 @@
         "texto6": "Información del Desarrollador"
     },
     "cambios":{
-        "guardar": "Guardar"
+        "guardar": "Guardar",
+        "loading": "Cargando"
+    },
+    "info":{
+        "nuevoAlumno": "Nuevo Alumno",
+        "editarAlumno": "Editar Alumno",
+        "notas": "Notas"
+    },
+    "profile":{
+        "title": "Informacion Personal",
+        "name": "Nomber: ",
+        "logOut": "Salir",
+        "deleteAccount": "Eliminar Cuenta"
+    },
+    "modalNota":{
+        "calificacion": "Calificación",
+        "fecha": "Fecha",
+        "asignatura": "Asignatura",
+        "descripcion": "Descripción"
+    },
+    "nota":{
+        "texto": "No existen notas de este estudiante",
+        "boton": "Nueva nota",
+        "calificacion": "Calificación",
+        "fecha": "Fecha",
+        "asignatura": "Asignatura",
+        "descripcion": "Descripción",
+        "acciones": "Acciones"
+    },
+    "register": {
+        "texto": "Debe tener 8 caracteres, mínimo un número y una mayúscula",
+        "texto2": "Deben coincidir las contraseñas",
+        "nombreUsuario": "Nombre de usuario",
+        "contraseña": "Contraseña",
+        "confirmación": "Repita la contraseña"
     }
 }

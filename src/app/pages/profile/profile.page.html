@@ -2,11 +2,11 @@
 
   <ion-card class="info-card">
     <ion-card-header>
-      <ion-card-title class="card-title">Información Personal</ion-card-title>
+      <ion-card-title class="card-title">{{"profile.title" | translate}}</ion-card-title>
     </ion-card-header>
 
     <ion-card-content class="card-content">
-      <ion-label class="label">Nombre:</ion-label>
+      <ion-label class="label">{{"profile.name" | translate}}</ion-label>
       <ion-text class="info">{{user?.username}}</ion-text>
 
       <ion-label class="label">Email:</ion-label>
@@ -16,11 +16,11 @@
   <div class="button-container">
     <ion-button class="logout-button" (click)="onSingOut()" color="danger">
       <ion-icon slot="start" name="log-out-outline"></ion-icon>
-      Log out
+      {{"profile.logOut" | translate}}
     </ion-button>
     <ion-button class="logout-button" (click)="onDeleteAccount()" color="danger">
       <ion-icon slot="start" name="log-out-outline"></ion-icon>
-      Delete Account
+      {{"profile.deleteAccount" | translate}}
     </ion-button>
   </div>
 

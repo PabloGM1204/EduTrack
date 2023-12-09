@@ -1,13 +1,12 @@
 <div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()" (keyup.enter)="onSubmit()">
     <ion-item>
-      <ion-input label="Nombre" labelPlacement="start" formControlName="nombre" type="text"></ion-input>
+      <ion-input label='{{"alumnos.nombre" | translate}}' labelPlacement="start" formControlName="nombre" type="text"></ion-input>
     </ion-item>
     <app-alumno-selectable *ngIf="mode == 'Edit'"
       formControlName="alumnoId">
     </app-alumno-selectable>
   </form>
-
   <ion-buttons class="botones">
     <ion-button color="primary" fill="clear" (click)="onCancel()">
       <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>

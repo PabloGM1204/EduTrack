@@ -1,17 +1,19 @@
 <ion-content *ngIf="notas.length === 0">
-  <p>Niguna nota en este alumno</p>
-  <ion-button (click)="anadirNota()">
-    Nueva Nota
-  </ion-button>
+  <div style="text-align: center;">
+    <p>{{"nota.texto" | translate}}</p>
+    <ion-button (click)="anadirNota()" class="ion-button">
+      {{"nota.boton" | translate}}
+    </ion-button>
+  </div>
 </ion-content>
 <ion-content *ngIf="notas.length > 0" [fullscreen]="true" id="general">
     <ion-grid>
       <ion-row>
-        <ion-col size="2.5">Calificación</ion-col>
-        <ion-col size="2.5">Fecha</ion-col>
-        <ion-col size="2.5">Asignatura</ion-col>
-        <ion-col size="2.5">Descripción</ion-col>
-        <ion-col size="2">Acciones</ion-col>
+        <ion-col size="2.5">{{"nota.calificacion" | translate}}</ion-col>
+        <ion-col size="2.5">{{"nota.fecha" | translate}}</ion-col>
+        <ion-col size="2.5">{{"nota.asignatura" | translate}}</ion-col>
+        <ion-col size="2.5">{{"nota.descripcion" | translate}}</ion-col>
+        <ion-col size="2">{{"nota.acciones" | translate}}</ion-col>
       </ion-row>
       <ion-row *ngFor="let nota of notas">
         <ion-col size="2.5">{{ nota.calificacion }}</ion-col>
@@ -28,7 +30,9 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-button (click)="anadirNota()">
-      Nueva Nota
-    </ion-button>
+    <div style="text-align: center;">
+      <ion-button (click)="anadirNota()" class="ion-button">
+        {{"nota.boton" | translate}}
+      </ion-button>
+    </div>
   </ion-content>

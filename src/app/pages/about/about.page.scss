@@ -1,6 +1,9 @@
 ion-content{
-    top: 30px;
-    --background: url('../../../assets/imgs/logo-edutrack-grande-fondo.jpg');
+    top: 35px;
+    --background: url('../../../assets/imgs/fondos/fondo-moderno.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 ion-card {
