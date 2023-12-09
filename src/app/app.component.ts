@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/services/api/strapi/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from './core/interfaces/user';
 import { CustomTranslateService } from './core/services/custom-translate.service';
 
@@ -11,25 +11,32 @@ import { CustomTranslateService } from './core/services/custom-translate.service
 })
 export class AppComponent {
 
-  primera: boolean = true;
+  estaEnLogin: boolean = false;
   lang: string = "es";
   user: User | undefined
   constructor(
     public auth: AuthService,
     private rotuer: Router,
+    private routerActive: ActivatedRoute,
     public translate: CustomTranslateService
   ) {
+    // Verifica si la ruta actual coincide con '/login'
+    this.estaEnLogin = this.rotuer.url === '/login';
+
+    // También puedes suscribirte a cambios en la ruta para manejar actualizaciones
+    this.rotuer.events.subscribe(() => {
+      this.estaEnLogin = this.rotuer.url === '/login';
+    });
     this.auth.isLogged$.subscribe(logged => {
+      console.log(logged)
       if(logged){
         this.rotuer.navigate(['/home']);
         this.auth.me().subscribe(_ => {
           console.log("Usuario logeado"+_.username)
           this.user = _
-          this.primera = false
         })
       } else
         this.rotuer.navigate(['/login'])
-        this.primera = true
     });
     this.translate.use(this.lang)
   }
