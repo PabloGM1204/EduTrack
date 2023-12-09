@@ -35,4 +35,6 @@ Este proyecto es una aplicación web desarrollada con Angular e Ionic que permit
 
 
 
-## Vide de uso de la aplicación
+## Video de uso de la aplicación
+
+[![Video](/src/assets/imgs/logo-edutrack.jpg)](https://youtu.be/LCi3qDJm7yE)
