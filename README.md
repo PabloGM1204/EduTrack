@@ -20,9 +20,9 @@ Este proyecto es una aplicación web desarrollada con Angular e Ionic que permit
 
 - **Integración con Strapi:** Utiliza Strapi como backend para almacenar y gestionar la información de los alumnos y notas.
 
-- **Capacitor para Despliegue Móvil:** Aprovecha Capacitor para desplegar la aplicación en dispositivos móviles y acceder a funcionalidades nativas.
+- **Capacitor:** Aprovecha Capacitor para poder hacer los registros y login de manera eficiente y segura.
 
-- **Render y Netlify para Hosting:** Utiliza Render para alojar la aplicación frontend y Netlify para el despliegue continuo y hosting del backend.
+- **Render y Netlify para Hosting:** Utiliza Render para la base de datos de la aplicación y Netlify para el despliegue continuo y hosting.
 
 ## Páginas (todas ellas traducidas):
   - **Login/Register:** Formulario para iniciar sesión o crear una cuenta.
