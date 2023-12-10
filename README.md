@@ -31,10 +31,6 @@ Este proyecto es una aplicación web desarrollada con Angular e Ionic que permit
   - **Perfil:** Permite a los usuarios ver y editar su perfil después de iniciar sesión.
   - **Sobre el Desarrollador:** Proporciona información sobre el desarrollador de la aplicación.
 
-## Estructura de la BD
-
-
-
 ## Video de uso de la aplicación
 
 [![Video](/src/assets/imgs/logo-edutrack.jpg)](https://youtu.be/LCi3qDJm7yE)
